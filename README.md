@@ -4,7 +4,7 @@ ASTROBLAST! is a single player platform animation side scroller game (gameplay i
 
 ## Foundations
 ### Class Diagram 
-![Astroblast Class Diagram] (https://github.com/kennedyromick/CrazyCodingClub/blob/master/Astroblast%20Class%20Diagram.png)
+! [Astroblast Class Diagram] (https://drive.google.com/open?id=11BJ5Pb_yklcXfpwp_MXwQEvLQkX42cf9)
 
 ## Getting Started
 Follow the instructions below to set up the game and rules/directions for gameplay.
