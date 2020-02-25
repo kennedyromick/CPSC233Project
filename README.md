@@ -17,7 +17,7 @@ The objective of the game is to complete each level with a limited number of col
 
 
 ## Contributors
-Kennedy Romick
-Anastasiia Slobodianyk
-Justine Leslie
+Kennedy Romick,
+Anastasiia Slobodianyk,
+Justine Leslie,
 Sean Anselmo
