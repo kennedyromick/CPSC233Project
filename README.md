@@ -30,4 +30,4 @@ Limited number of collisions allowed: health decreases with collisions. Enemies 
 Kennedy Romick,
 Anastasiia Slobodianyk,
 Justine Leslie,
-Sean Anselmo
+Sean Anselmo.
