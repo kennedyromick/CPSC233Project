@@ -1,16 +1,24 @@
 package TeamProject;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
-
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.util.ArrayList;
 
 
 public class GameGUI extends Application{
+
+	ArrayList<Obstacle> obstacleList = new ArrayList<Obstacle>();
 	
 	Avatar avatar = new Avatar(0,800,50,50);
 	Obstacle one = new Obstacle(100,800,200,50);
@@ -31,9 +39,11 @@ public class GameGUI extends Application{
 	Obstacle sixteen = new Obstacle(1200,350,100,50);
 	
 	
+	
 	 public static void main(String[] args)
 	   {
 	      Application.launch(args);
+	      
 	   }
 	
 	public void start(Stage primaryStage) {
@@ -42,7 +52,7 @@ public class GameGUI extends Application{
 		Group root = new Group();
 		Scene theScene = new Scene(root);
 		primaryStage.setScene(theScene);
-		
+
 		AvatarMovement avatarHandler = new AvatarMovement(avatar);
 		theScene.setOnKeyPressed(avatarHandler);
 		
@@ -54,7 +64,47 @@ public class GameGUI extends Application{
 		root.getChildren().addAll(avatar, one, two, three, four, five, six, seven, eight, nine);
 		root.getChildren().addAll(ten, eleven, tweleve, thirteen, fourteen, fifteen, sixteen);
 		
+     	createObjList();
+     	
+     	Timeline timeline = new Timeline(
+     			new KeyFrame(Duration.millis(10),
+     	               new EventHandler <ActionEvent>()
+     				   {
+     				   	@Override
+     				   	public void handle(ActionEvent event)
+     				   	{
+     						for(Obstacle o: obstacleList) {
+     							avatar.collisionCheck(o);
+     						}
+     				   }
+     				   }
+     			)
+     			);
+     	timeline.setCycleCount(Timeline.INDEFINITE);
+    	timeline.setAutoReverse(true);
+    	timeline.play();
+
+		
 		primaryStage.show();
+	}
+	
+	public void createObjList() {
+		obstacleList.add(one);
+		obstacleList.add(two);
+		obstacleList.add(three);
+		obstacleList.add(four);
+		obstacleList.add(five);
+		obstacleList.add(six);
+		obstacleList.add(seven);
+		obstacleList.add(eight);
+		obstacleList.add(nine);
+		obstacleList.add(ten);
+		obstacleList.add(eleven);
+		obstacleList.add(tweleve);
+		obstacleList.add(thirteen);
+		obstacleList.add(fourteen);
+		obstacleList.add(fifteen);
+		obstacleList.add(sixteen);
 	}
 	
 
