@@ -23,42 +23,30 @@ public class Avatar extends Rectangle
 	public void collisionCheck(Obstacle o) {
 		// moving right
 		if(getX()+getWidth() == o.getX()) {
-			if((getY()>= o.getY() && getY()<= o.getY()+getHeight()) || (getY()+getHeight()>= o.getY() && getY()+getHeight()<= o.getY()+getHeight())) {
+			if((getY()>= o.getY() && getY()<= o.getY()+o.getHeight()) || (getY()+getHeight()>= o.getY() && getY()+getHeight()<= o.getY()+o.getHeight())) {
 			collisionX1 = true;
 			}
 		}
 		// moving left
 		else if(getX() == o.getX()+o.getWidth()) {
-			if((getY()>= o.getY() && getY()<= o.getY()+getHeight()) || (getY()+getHeight()>= o.getY() && getY()+getHeight()<= o.getY()+getHeight())) {
+			if((getY()>= o.getY() && getY()<= o.getY()+o.getHeight()) || (getY()+getHeight()>= o.getY() && getY()+getHeight()<= o.getY()+o.getHeight())) {
 			collisionX2 = true;
 			}
 		}
 		// moving up
 		else if(getY() == o.getY()+o.getHeight()) {
-			if((getX()>= o.getX() && getX()<= o.getX()+getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+getWidth())) {
+			if((getX()>= o.getX() && getX()<= o.getX()+o.getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+o.getWidth())) {
 			collisionY2 = true;
 			}
 		}
 		// moving down
 		else if(getY()+getHeight() == o.getY()) {
-			if((getX()>= o.getX() && getX()<= o.getX()+getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+getWidth())) {
+			if((getX()>= o.getX() && getX()<= o.getX()+o.getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+o.getWidth())) {
 			collisionY1 = true;
 			}
 		}
 	}
 	
-	
-//	public void grav() {
-//		if(collisionY1 = false) {
-//		velocityY = 0.05;
-//		}
-//		else {
-//			velocityY = 0.0;
-//		}
-//		double y = getY();
-//		y += velocityY;
-//		setY(y);
-//	}
 	
 	public void moveUp() {
 		collisionX2 = false;
