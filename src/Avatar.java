@@ -2,21 +2,20 @@ package TeamProject;
 
 import javafx.scene.shape.Rectangle;
 
-public class Avatar extends Rectangle
+public class Avatar extends Moveable
 
 {
 
-	private double velocityX, velocityY;
+
 	boolean collisionY1 = false;
 	boolean collisionY2 = false;
 	boolean collisionX1 = false;
 	boolean collisionX2 = false;
+	boolean canJump = false;
 
 	
 	public Avatar(double x, double y, double width, double height) {
 		super(x, y, width, height);
-		velocityX = 0;
-		velocityY = 0;
 	}
 
 	
@@ -43,6 +42,7 @@ public class Avatar extends Rectangle
 		else if(getY()+getHeight() == o.getY()) {
 			if((getX()>= o.getX() && getX()<= o.getX()+o.getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+o.getWidth())) {
 			collisionY1 = true;
+			canJump = true;
 			}
 		}
 	}
@@ -53,10 +53,7 @@ public class Avatar extends Rectangle
 		collisionX1 = false;
 		collisionY1 = false;
 		if(collisionY2 == false) {
-		velocityY = -5.0;
-		double y = getY();
-		y += velocityY;
-		setY(y);
+		super.moveUp();
 		}
 	}
 	public void moveDown() {
@@ -64,10 +61,7 @@ public class Avatar extends Rectangle
 		collisionY2 = false;
 		collisionX1 = false;
 		if(collisionY1 == false) {
-		velocityY = 5.0;
-		double y = getY();
-		y += velocityY;
-		setY(y);
+		super.moveDown();
 		}
 	}
 	public void moveLeft() {
@@ -75,10 +69,7 @@ public class Avatar extends Rectangle
 		collisionY2 = false;
 		collisionY1 = false;
 		if(collisionX2 == false) {
-		velocityX = -5.0;
-		double x = getX();
-		x += velocityX;
-		setX(x);
+		super.moveLeft();
 		}
 	}
 	public void moveRight() {
@@ -86,14 +77,24 @@ public class Avatar extends Rectangle
 		collisionY2 = false;
 		collisionY1 = false;
 		if(collisionX1 == false) {
-		velocityX = 5.0;
-		double x = getX();
-		x += velocityX;
-		setX(x);
+		super.moveRight();
+		}
+	}
+
+	public void jump() {	
+		if(canJump) {
+			super.jump();
+			canJump = false;		
 		}
 	}
 
 
+	public void grav() {
+		collisionX2 = false;
+		collisionY2 = false;
+		collisionX1 = false;
+		if (canJump == false || collisionY1 == false) {
+		super.grav();
+	}
+	}
 }
-
-
