@@ -15,7 +15,7 @@ Follow the instructions below to set up the game and rules/directions for gamepl
 3. Open the terminal, change the directory to the one you would like the files to be cloned to. 
 4. Type `git clone` and paste the URL copied in step 2. Then press **Enter** to create a local clone.
   > `git clone https://github.com/<your-username>/<your-repository>`
-5. The code is now in your workspace, so you can run the code as you like.
+5. Launch **Eclipse** workspace, create a **New Java Project**, create a **new package**, import cloned repository in the project (exclusing Obstacle1.java and Animation.java). Rename 
 
 ### Instructions
 The objective of the game is to complete the level with the fewest collisions possible, and without dying in the harder levels.
