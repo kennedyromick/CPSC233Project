@@ -14,7 +14,7 @@ Follow the instructions below to set up the game and rules/directions for gamepl
 2. Copy the https:// link provided.
 3. Open the terminal, change the directory to the one you would like the files to be cloned to. 
 4. Type `git clone` and paste the URL copied in step 2. Then press **Enter** to create a local clone.
-  > `git clone https://github.com/<your-username>/your-repository`
+  > `git clone https://github.com/<your-username>/<your-repository>`
 5. 
 
 ### Instructions
