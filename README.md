@@ -15,11 +15,12 @@ Follow the instructions below to set up the game and rules/directions for gamepl
 3. Open the terminal, change the directory to the one you would like the files to be cloned to. 
 4. Type `git clone` and paste the URL copied in step 2. Then press **Enter** to create a local clone.
   > `git clone https://github.com/<your-username>/your-repository`
+5. 
 
 ### Instructions
 The objective of the game is to complete the level with the fewest collisions possible, and without dying in the harder levels.
 ##### Controls
-Use the keyboard to control motion. The text based version of the game is played in a 10 by 10 grid, with “-” representing empty spaces, " * " representing obstacles that the avatar cannot go through, and “^” representing your avatar. The console will prompt you to input a command by outputing "Enter your move", and you may choose any of the following: “a” for right “w” for up “s” for down “d” for right and “e” to exit the game.
+Use the keyboard arrows to control motion: "^" jump, ">" forward, "<" backward. The avatar cannot move through obstacles (black blocks), and loses velocity upon collision. 
 ##### Level One
 Avatar cannot die. Non-moving, non-lethal objects only. 
 ##### Level Two
