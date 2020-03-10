@@ -68,7 +68,7 @@ public class GameGUI extends Application{
      	createObjList();
      	
      	Timeline timeline = new Timeline(
-     			new KeyFrame(Duration.millis(0.25),
+     			new KeyFrame(Duration.millis(10),
      	               new EventHandler <ActionEvent>()
      				   {
      				   	@Override
@@ -77,7 +77,6 @@ public class GameGUI extends Application{
      						for(Obstacle o: obstacleList) {
      							avatar.collisionCheck(o);
      							}
-     						// avatar.grav();
      						
 
      						}
