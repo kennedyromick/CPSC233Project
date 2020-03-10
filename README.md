@@ -10,10 +10,11 @@ ASTROBLAST! is a single player platform animation side scroller game (gameplay i
 Follow the instructions below to set up the game and rules/directions for gameplay.
 
 ### Installing
-1. Locate the scr folder within the master branch which is where all of the files needed for play are located. 
-2. Copy the folder containing the files Animation.java, Avatar1.java, and Obstacle1.java from the aforementioned code repository. 
-3. Open the terminal and compile each of the files. This is done by typing "javac <filename>.java" in the terminal. 
-4. Once the files have been compiled run the Animation class by typing "java Animation" in the terminal.
+1. On the main page of the repository, click **Clone or download**.
+2. Copy the https:// link provided.
+3. Open the terminal, change the directory to the one you would like the files to be cloned to. 
+4. Type `git clone` and paste the URL copied in step 2. Then press **Enter** to create a local clone.
+  > `git clone https://github.com/<your-username>/your-repository`
 
 ### Instructions
 The objective of the game is to complete the level with the fewest collisions possible, and without dying in the harder levels.
