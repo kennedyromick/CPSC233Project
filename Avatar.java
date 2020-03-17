@@ -1,87 +1,110 @@
 package TeamProject;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
-import javafx.scene.shape.Rectangle;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-public class Avatar extends Rectangle
+public class Avatar extends Moveable {
 
-{
+	boolean collisionY1 = false;
+	boolean collisionY2 = false;
+	boolean collisionX1 = false;
+	boolean collisionX2 = false;
+	boolean canJump = false;
+	boolean reverse = true;
+	private int w;
+	private int h;
+	private Image image;
 
-	private double velocityX, velocityY;
-	private boolean falling = true;
-	private boolean jumping = false;
-	boolean collisionY = false;
-	boolean collisionX = false;
-	private float gravity = 1.0f;
-	
+
 	public Avatar(double x, double y, double width, double height) {
 		super(x, y, width, height);
-		velocityX = 0;
-		velocityY = 0;
 	}
-//	//public void tick(LinkedList<Rectangle> avatar) {
-//		x += velocityX;
-//		y += velocityY;
-//		if (falling || jumping) {
-//			velocityY += gravity;
-//		//	if(velocityY > )
-//			
-//		}
-		
+
 	
 	public void collisionCheck(Obstacle o) {
-		if(getX()+getWidth() == o.getX() - 10 || getX() == o.getX() - o.getWidth()+ 10) {
-			System.out.println(getX());
-			System.out.println(o.getX());
-			collisionX = true;
+		// moving right
+		if(getX()+getWidth() == o.getX()) {
+			if((getY()>= o.getY() && getY()<= o.getY()+o.getHeight()) || (getY()+getHeight()>= o.getY() && getY()+getHeight()<= o.getY()+o.getHeight())) {
+			collisionX1 = true;
+			}
 		}
-		if(getY() == o.getY() - 5 || getY() == o.getY()-o.getHeight()+5) {
-			collisionY = true;
+		// moving left
+		else if(getX() == o.getX()+o.getWidth()) {
+			if((getY()>= o.getY() && getY()<= o.getY()+o.getHeight()) || (getY()+getHeight()>= o.getY() && getY()+getHeight()<= o.getY()+o.getHeight())) {
+			collisionX2 = true;
+			}
 		}
+		// moving up
+		else if(getY() == o.getY()+o.getHeight()) {
+			if((getX()>= o.getX() && getX()<= o.getX()+o.getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+o.getWidth())) {
+			collisionY2 = true;
+			canJump = true;
+			}
+		}
+
+	// moving down
+		else if(getY()+getHeight() == o.getY()) {
+			if((getX()>= o.getX() && getX()<= o.getX()+o.getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+o.getWidth())) {
+			collisionY1 = true;
+			canJump = true;
+			}
+		}
+	}
+
+	public void moveUp() {
+		collisionX2 = false;
+		collisionX1 = false;
+		collisionY1 = false;
+		if(collisionY2 == false) {
+		super.moveUp();
+		}
+	}
+
+	public void moveDown() {
+		collisionX2 = false;
+		collisionY2 = false;
+		collisionX1 = false;
+		if(collisionY1 == false) {
+		super.moveDown();
+		}
+	}
+
+	public void moveLeft() {
+		collisionX1 = false;
+		collisionY2 = false;
+		collisionY1 = false;
+		if(collisionX2 == false) {
+		super.moveLeft();
+		}
+	}
+
+	public void moveRight() {
+		collisionX2 = false;
+		collisionY2 = false;
+		collisionY1 = false;
+		if(collisionX1 == false) {
+		super.moveRight();
+		}
+	}
+
+	public void jump() {	
+		if (canJump == false || collisionY2 == false) {
+			reverse = false;
+			super.jump();
+		}
+
 	}
 
 	public void grav() {
-		velocityY = 0.05;
-		double y = getY();
-		y += velocityY;
-		setY(y);
+		if (canJump == false || collisionY1 == false) {
+			reverse = true;
+		super.grav();
+	}
+	}
+
 	
-	}
-	public void moveUp() {
-		if(collisionY == false) {
-		velocityY = -50.0;
-		double y = getY();
-		y += velocityY;
-		setY(y);
-		}
-	}
-	public void moveDown() {
-		if(collisionY == false) {
-		velocityY = 5.0;
-		double y = getY();
-		y += velocityY;
-		setY(y);
-		}
-	}
-	public void moveLeft() {
-		if(collisionX == false) {
-		velocityX = -5.0;
-		double x = getX();
-		x += velocityX;
-		setX(x);
-		}
-	}
-	public void moveRight() {
-		if(collisionX == false) {
-		velocityX = 5.0;
-		double x = getX();
-		x += velocityX;
-		setX(x);
-		}
-	}
-
-
 }
-
