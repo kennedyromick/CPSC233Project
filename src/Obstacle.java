@@ -1,4 +1,4 @@
-package TeamProject;
+
 
 import javafx.scene.shape.Rectangle;
 

@@ -1,19 +1,18 @@
-package TeamProject;
+import javafx.scene.image.Image;
 
-import javafx.scene.shape.Rectangle;
-
-public class Avatar extends Moveable
-
-{
-
+public class Avatar extends Moveable {
 
 	boolean collisionY1 = false;
 	boolean collisionY2 = false;
 	boolean collisionX1 = false;
 	boolean collisionX2 = false;
 	boolean canJump = false;
+	boolean reverse = true;
+	private int w;
+	private int h;
+	private Image image;
 
-	
+
 	public Avatar(double x, double y, double width, double height) {
 		super(x, y, width, height);
 	}
@@ -36,9 +35,11 @@ public class Avatar extends Moveable
 		else if(getY() == o.getY()+o.getHeight()) {
 			if((getX()>= o.getX() && getX()<= o.getX()+o.getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+o.getWidth())) {
 			collisionY2 = true;
+			canJump = true;
 			}
 		}
-		// moving down
+
+	// moving down
 		else if(getY()+getHeight() == o.getY()) {
 			if((getX()>= o.getX() && getX()<= o.getX()+o.getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+o.getWidth())) {
 			collisionY1 = true;
@@ -46,8 +47,7 @@ public class Avatar extends Moveable
 			}
 		}
 	}
-	
-	
+
 	public void moveUp() {
 		collisionX2 = false;
 		collisionX1 = false;
@@ -56,6 +56,7 @@ public class Avatar extends Moveable
 		super.moveUp();
 		}
 	}
+
 	public void moveDown() {
 		collisionX2 = false;
 		collisionY2 = false;
@@ -64,6 +65,7 @@ public class Avatar extends Moveable
 		super.moveDown();
 		}
 	}
+
 	public void moveLeft() {
 		collisionX1 = false;
 		collisionY2 = false;
@@ -72,6 +74,7 @@ public class Avatar extends Moveable
 		super.moveLeft();
 		}
 	}
+
 	public void moveRight() {
 		collisionX2 = false;
 		collisionY2 = false;
@@ -82,19 +85,19 @@ public class Avatar extends Moveable
 	}
 
 	public void jump() {	
-		if(canJump) {
+		if (canJump == false || collisionY2 == false) {
+			reverse = false;
 			super.jump();
-			canJump = false;		
 		}
+
 	}
 
-
 	public void grav() {
-		collisionX2 = false;
-		collisionY2 = false;
-		collisionX1 = false;
 		if (canJump == false || collisionY1 == false) {
+			reverse = true;
 		super.grav();
 	}
 	}
+
+	
 }
