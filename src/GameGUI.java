@@ -1,4 +1,4 @@
-package FinalProject;
+package main;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -22,7 +22,7 @@ public class GameGUI extends Application{
 	Avatar avatar = new Avatar(5,765,35,35);
 	
 
-	/*
+	
 	Obstacle one = new Obstacle(0,800,13500,50);
 	Obstacle two = new Obstacle(300,725,200,10);
 	Obstacle three = new Obstacle(500,650,100,10);
@@ -55,7 +55,7 @@ public class GameGUI extends Application{
 	Obstacle xxx = new Obstacle(3700,725,200,10);
 	Obstacle xxxi = new Obstacle(3900,350,100,10);
 	Obstacle xxxii = new Obstacle(4000,350,100,10);
-	*/
+
 	 public static void main(String[] args)
 	   {
 	      Application.launch(args);
@@ -75,19 +75,19 @@ public class GameGUI extends Application{
 		AvatarMovement avatarHandler = new AvatarMovement(avatar);
 		theScene.setOnKeyPressed(avatarHandler);
 		
-		Canvas canvas = new Canvas(13500,800);
+		Canvas canvas = new Canvas(1350,800);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		root.getChildren().add(canvas);	
 		
 		Enemy.makeEnemies();
 		
 		avatar.setFill(Color.BLUE);
-		//root.getChildren().addAll(avatar, one, two, three, four, five, six, seven, eight, nine, ten, eleven, tweleve, thirteen);
-		//root.getChildren().addAll(fourteen, fifteen, sixteen, eighteen, nineteen, twenty);
-//		root.getChildren().addAll(xxiii, xxiv, xxv, xxvi, xxvii, xxviii, xxix, xxx, xxxi, xxxii);
+		root.getChildren().addAll(avatar, one, two, three, four, five, six, seven, eight, nine, ten, eleven, tweleve, thirteen);
+		root.getChildren().addAll(fourteen, fifteen, sixteen, eighteen, nineteen, twenty);
+		root.getChildren().addAll(xxiii, xxiv, xxv, xxvi, xxvii, xxviii, xxix, xxx, xxxi, xxxii);
 		root.getChildren().addAll(Enemy.getList());
 	
-		//createObjList();
+		createObjList();
      	
     		
      	Timeline timeline = new Timeline(
@@ -140,7 +140,7 @@ public class GameGUI extends Application{
      				   	}
      				   
 	
-     	/*public void createObjList() 
+     	public void createObjList()
      	{
      		obstacleList.add(one);
 			obstacleList.add(two);
@@ -176,7 +176,7 @@ public class GameGUI extends Application{
      		obstacleList.add(xxxii);
 
      					}
-     					*/
+
 
 }
 
