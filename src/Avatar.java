@@ -1,4 +1,6 @@
-import javafx.scene.image.Image;
+package FinalProject;
+
+import javafx.scene.shape.Rectangle;
 
 public class Avatar extends Moveable {
 
@@ -8,9 +10,7 @@ public class Avatar extends Moveable {
 	boolean collisionX2 = false;
 	boolean canJump = false;
 	boolean reverse = true;
-	private int w;
-	private int h;
-	private Image image;
+
 
 
 	public Avatar(double x, double y, double width, double height) {
@@ -97,6 +97,12 @@ public class Avatar extends Moveable {
 			reverse = true;
 		super.grav();
 	}
+	}
+
+
+	public boolean intersects(Rectangle r) 
+	{
+		return (super.intersects(r.getX(), r.getY(), r.getWidth(), r.getHeight()));
 	}
 
 	
