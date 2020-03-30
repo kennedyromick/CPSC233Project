@@ -1,36 +1,42 @@
 import javafx.event.EventHandler;
+
 import javafx.scene.input.KeyEvent;
 
+
+
 public class AvatarMovement implements EventHandler<KeyEvent>{
-	
+
 	private Avatar avatar;
-	
-	
-	public AvatarMovement(Avatar avatar) {
+	private ObstacleList obstacleList = new ObstacleList();
+	private RunnerList runnerList = new RunnerList();
+
+	public AvatarMovement(Avatar avatar, ObstacleList obstacleList, RunnerList runnerList) {
 		this.avatar = avatar;
+		this.obstacleList = obstacleList;
+		this.runnerList = runnerList;
 	}
 
-
 	@Override
-
 	public void handle(KeyEvent e) {
 
 		switch(e.getCode()) {
 
-		case RIGHT: if(avatar.getX() <= 1310) {avatar.moveRight();}
+		case RIGHT: if(avatar.getX() <= 1350) {avatar.moveRight(obstacleList, runnerList);}
 			break;
 
-		case LEFT: if(avatar.getX() >= 5) {avatar.moveLeft();}
+		case LEFT: if(avatar.getX() >= 5) {avatar.moveLeft(obstacleList, runnerList);}
 			break;
-			
+
 		case UP:if(avatar.getY() >= 5) {avatar.jump();}
 			break;
 
-		case DOWN:if(avatar.getY() <= 800) { avatar.grav();}
+		case DOWN:if(avatar.getY() <= 800) {avatar.grav();}
 			break;
 
 		}
 
 	}
+
 }
+
 

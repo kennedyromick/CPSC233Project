@@ -2,45 +2,25 @@
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.util.ArrayList;
 
 
 public class GameGUI extends Application{
 
-	ArrayList<Obstacle> obstacleList = new ArrayList<Obstacle>();
+	ObstacleList obstacleList = new ObstacleList();
+//	EnemyList enemyList = new EnemyList();
+	RunnerList runnerList = new RunnerList();
 	
-	Avatar avatar = new Avatar(0,765,35,35);
-	
-
-	
-	Obstacle one = new Obstacle(0,800,1350,50);
-	Obstacle two = new Obstacle(300,725,200,50);
-	Obstacle three = new Obstacle(500,650,100,50);
-	Obstacle four = new Obstacle(600,725,200,50);
-	Obstacle five = new Obstacle(250,575,200,50);
-	Obstacle six = new Obstacle(0,0,1350,50);
-	Obstacle seven = new Obstacle(150,500,100,50);
-	Obstacle eight = new Obstacle(0,425,150,50);
-	Obstacle nine = new Obstacle(650,575,200,50);
-	Obstacle ten = new Obstacle(850,500,200,50);
-	Obstacle eleven = new Obstacle(1050,425,150,50);
-	Obstacle tweleve = new Obstacle(675,425,125,50);
-	Obstacle thirteen = new Obstacle(475,350,200,50);
-	Obstacle fourteen = new Obstacle(275,275,200,50);
-	Obstacle fifteen = new Obstacle(1000,725,200,50);
-	Obstacle sixteen = new Obstacle(1200,350,100,50);
-	
+	Avatar avatar = new Avatar(10,765,25,25);
 	
 	
 	 public static void main(String[] args)
@@ -58,36 +38,76 @@ public class GameGUI extends Application{
 		primaryStage.setScene(theScene);
 		
 
-		AvatarMovement avatarHandler = new AvatarMovement(avatar);
+		AvatarMovement avatarHandler = new AvatarMovement(avatar, obstacleList, runnerList);
 		theScene.setOnKeyPressed(avatarHandler);
 		
 		Canvas canvas = new Canvas(1350,800);
-		GraphicsContext gc = canvas.getGraphicsContext2D();
 		root.getChildren().add(canvas);
 		
 		avatar.setFill(Color.BLUE);
-		root.getChildren().addAll(avatar, one, two, three, four, five, six, seven, eight, nine);
-		root.getChildren().addAll(ten, eleven, tweleve, thirteen, fourteen, fifteen, sixteen);
+		root.getChildren().add(avatar);
+		root.getChildren().addAll(runnerList);
+		root.getChildren().addAll(obstacleList);
+//		root.getChildren().addAll(enemyList);
 		
-     	createObjList();
+//     	createRunnerList();
+//     	colourRunner();
      	
      	Timeline timeline = new Timeline(
-     			new KeyFrame(Duration.millis(1),
+     			new KeyFrame(Duration.millis(10),
      	               new EventHandler <ActionEvent>()
      				   {
      				   	@Override
      				   	public void handle(ActionEvent event)
      				   	{
-     						for(Obstacle o: obstacleList) {
+     				   	for(Runner r: runnerList) {
+     						r.updateLocation();
+     						if(r.leftEnd != r.rightEnd) {
+     							 if(r.getX()<= r.leftEnd) {
+     								 r.reverseX();
+     							 }
+     							 else if(r.getX()>= r.rightEnd) {
+     								r.reverseX();
+     							 }
+     						 }
+     						 if(r.upEnd != r.downEnd) {
+     							 if(r.getY()< r.upEnd) {
+     								 r.reverseY();
+     							 }
+     							 if(r.getY()>= r.downEnd) {
+     								 r.reverseY();
+     							 }
+     						 }
+      						}
+     						for(Obstacle o: obstacleList) 
+     						{
      							avatar.collisionCheck(o);
+     							if(o == obstacleList.get(41)) {
+     								if(avatar.intersects(o)) {
+     									System.exit(0);
+     								}
      							}
-     						if(avatar.reverse == false) {
+     						}
+     						if(avatar.reverse == false) 
+     						{
      							avatar.jump();
      						}
-     						else if(avatar.reverse == true) {
+     						else if(avatar.reverse == true) 
+     						{
         						avatar.grav();
      						}
-
+//     						for(Enemy e: enemyList)
+//     						{
+//     				    		if (avatar.intersects(e))
+//     				    		{
+//     				    			System.exit(0);
+//     				    		}
+//     				    	}
+      						for(Runner r: runnerList) {
+     							if(avatar.intersects(r)) {
+     								Platform.exit();
+     							}
+     							}
      						}
      				   }
      			)
@@ -100,24 +120,6 @@ public class GameGUI extends Application{
 		primaryStage.show();
 	}
 	
-	public void createObjList() {
-		obstacleList.add(one);
-		obstacleList.add(two);
-		obstacleList.add(three);
-		obstacleList.add(four);
-		obstacleList.add(five);
-		obstacleList.add(six);
-		obstacleList.add(seven);
-		obstacleList.add(eight);
-		obstacleList.add(nine);
-		obstacleList.add(ten);
-		obstacleList.add(eleven);
-		obstacleList.add(tweleve);
-		obstacleList.add(thirteen);
-		obstacleList.add(fourteen);
-		obstacleList.add(fifteen);
-		obstacleList.add(sixteen);
-	}
 	
 
 }
