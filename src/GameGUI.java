@@ -82,6 +82,11 @@ public class GameGUI extends Application{
      							     				   	{
      							     				   	for(Obstacle p: obstacleList2) {
      						     							avatar2.collisionCheck(p);
+     						     							if(p==obstacleList2.get(41)) {
+     						     								if(avatar2.intersects(p)) {
+     						     									System.exit(0);
+     						     								}
+     						     							}
      						     						}
      						     						if(avatar2.reverse == false) 
      						     						{
@@ -154,6 +159,3 @@ public class GameGUI extends Application{
 	
 
 }
-
-
-
