@@ -1,3 +1,4 @@
+package FinalProject;
 import javafx.scene.paint.Color;
 
 public class Runner extends Moveable{
@@ -13,13 +14,13 @@ public class Runner extends Moveable{
 	int velX;
 	int velY;
 	
-	public Runner(double x, double y, double width, double height, int end3, int end4, int vY) {
+	public Runner(double x, double y, double width, double height, int end1, int end2, int end3, int end4, int vX, int vY) {
 		super(x,y,width,height);
-//		leftEnd = end1;
-//		rightEnd = end2;
+		leftEnd = end1;
+		rightEnd = end2;
 		upEnd = end3;
 		downEnd = end4;
-//		velX = vX;
+		velX = vX;
 		velY = vY;
 		this.setFill(Color.RED);
 	}
