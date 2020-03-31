@@ -7,8 +7,8 @@ import javafx.scene.input.KeyEvent;
 public class AvatarMovement implements EventHandler<KeyEvent>{
 
 	private Avatar avatar;
-	private ObstacleList obstacleList = new ObstacleList();
-	private RunnerList runnerList = new RunnerList();
+	private ObstacleList obstacleList = new ObstacleList(1);
+	private RunnerList runnerList = new RunnerList(1);
 
 	public AvatarMovement(Avatar avatar, ObstacleList obstacleList, RunnerList runnerList) {
 		this.avatar = avatar;
