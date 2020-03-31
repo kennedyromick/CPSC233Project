@@ -22,7 +22,7 @@ The objective of the game is to complete the level without colliding into any en
 ##### Controls
 Use the keyboard arrows to control motion: ">" right and "<" left. The up and down arrow keys reverse gravity. There is no jump feature, with reverse gravity the avatar is continuously moving upwards or downwards until they collide with a platform.
 ##### Level One
-Player cannot die. No enemies are presented, only black platforms. This level is an opprotunity to get use to the movement of the avatar for future levels. To complete the level move right until the vertical wall is hit, this will bring you to level 2.
+Player cannot die. No enemies are presented, only black platforms. This level is an opportunity to get use to the movement of the avatar for future levels. To complete the level move right until the vertical wall is hit, this will bring you to level 2.
 ##### Level Two
 Player can now die by colliding into enemies (red). Same movement and objective as level one, however with the addition of avoiding enemies.
 ##### Level Three
