@@ -1,81 +1,207 @@
-package FinalProject;
-
 import java.util.ArrayList;
+
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 
 public class ObstacleList extends ArrayList<Obstacle>
 {
-	public ObstacleList()
+	
+	
+	public ObstacleList(int i)
 		{
-			makeObstacles();
+		if(i == 1) {
+			makeObstacles1();
+		}
+		else if (i==2) {
+			makeObstacles2();
+		}
+		else if(i==3) {
+			makeObstacles3();
+		}
 		}
 
-	public void makeObstacles()
-	{
-		Obstacle one = new Obstacle(0,800,13500,50);
-		Obstacle two = new Obstacle(300,725,200,10);
-		Obstacle three = new Obstacle(500,650,100,10);
-		Obstacle four = new Obstacle(600,725,200,10);
-		Obstacle five = new Obstacle(250,575,200,10);
-		Obstacle six = new Obstacle(0,0,13500,50);
-		Obstacle seven = new Obstacle(150,500,100,10);
-		Obstacle eight = new Obstacle(0,425,150,10);
-		Obstacle nine = new Obstacle(650,575,200,10);
-		Obstacle ten = new Obstacle(850,500,200,10);
-		Obstacle eleven = new Obstacle(1050,425,150,10);
-		Obstacle twelve = new Obstacle(675,425,125,10);
-		Obstacle thirteen = new Obstacle(475,350,200,10);
-		Obstacle fourteen = new Obstacle(275,275,200,10);
-		Obstacle fifteen = new Obstacle(1000,725,200,10);
-		Obstacle sixteen = new Obstacle(1200,350,100,10);
-//		Obstacle seventeen = new Obstacle(1200,800,1350,50);
-		Obstacle eighteen = new Obstacle(1500,725,200,10);
-		Obstacle nineteen = new Obstacle(1900,650,100,10);
-		Obstacle twenty = new Obstacle(2050,725,200,10);
-		Obstacle xxi = new Obstacle(2550,0,1350,10);
-//		Obstacle xxii = new Obstacle(2600,500,100,50);
-		Obstacle xxiii = new Obstacle(2800,425,150,10);
-		Obstacle xxiv = new Obstacle(2900,575,200,10);
-		Obstacle xxv = new Obstacle(3110,500,200,10);
-		Obstacle xxvi = new Obstacle(3200,425,150,10);
-		Obstacle xxvii = new Obstacle(3300,425,125,10);
-		Obstacle xxviii = new Obstacle(3500,350,200,10);
-		Obstacle xxix = new Obstacle(3700,275,200,10);
-		Obstacle xxx = new Obstacle(3700,725,200,10);
-		Obstacle xxxi = new Obstacle(3900,350,100,10);
-		Obstacle xxxii = new Obstacle(4000,350,100,10);
-
+	public void makeObstacles1()
+	{	
+	Obstacle i = new Obstacle(0,800,4000,20); //floor
+	Obstacle ii = new Obstacle(0,0,4000,20);  //ceiling
+	Obstacle one = new Obstacle(0,700,200,10);
+	Obstacle two = new Obstacle(200,500,200,10);
+	Obstacle three = new Obstacle(400,450,100,10);
+	Obstacle four = new Obstacle(500,200,200,10);
+	Obstacle five = new Obstacle(700,600,200,10);
+	Obstacle six = new Obstacle(900,500,150,10);
+	Obstacle seven = new Obstacle(1050,200,250,10);
+	Obstacle eight = new Obstacle(1200,700,150,10);
+	Obstacle nine = new Obstacle(1350,300,200,10);
+	Obstacle ten = new Obstacle(1550,200,250,10);
+	Obstacle eleven = new Obstacle(1750,400,150,10);
+	Obstacle twelve = new Obstacle(1900,300,200,10);
+	Obstacle thirteen = new Obstacle(2100,200,200,10);
+	Obstacle fourteen = new Obstacle(2300,600,200,10);
+	Obstacle fifteen = new Obstacle(2500,700,200,10);
+	Obstacle sixteen = new Obstacle(2700,100,100,10);
+	Obstacle seventeen = new Obstacle(2800,700,250,10);
+	Obstacle eighteen = new Obstacle(3050,200,150,10);
+	Obstacle nineteen = new Obstacle(3300,300,200,10);
+	Obstacle twenty = new Obstacle(3500,400,200,10);
+	Obstacle twentyone = new Obstacle(3700,500,150,10);
+	Obstacle twentytwo = new Obstacle(3850,400,150,10);
+	Obstacle twentythree = new Obstacle(0,350,250,10);
+	Obstacle twentyfour = new Obstacle(350,675,150,10);
+	Obstacle twentyfive = new Obstacle(700,750,100,10);
+	Obstacle twentysix = new Obstacle(750,150,200,10);
+	Obstacle twentyseven = new Obstacle(1550,600,150,10);
+	Obstacle twentyeight = new Obstacle(1700,700,100,10);
+	Obstacle twentynine = new Obstacle(1400,500,220,10);
+	Obstacle thirty = new Obstacle(2100,500,150,10);
+	Obstacle thirtyone = new Obstacle(2300,400,250,10);
+	Obstacle thirtytwo = new Obstacle(2500,550,150,10);
+	Obstacle thirtythree = new Obstacle(2650,600,100,10);
+	Obstacle thirtyfour = new Obstacle(2800,500,200,10);
+	Obstacle thirtyfive = new Obstacle(2900,700,300,10);
+	Obstacle thirtysix = new Obstacle(3000,400,200,10);
+	Obstacle thirtyseven = new Obstacle(3200,600,150,10);
+	Obstacle thirtyeight = new Obstacle(3500,700,200,10);
+	Obstacle thirtynine = new Obstacle(3700,600,100,10);
+	Obstacle forty = new Obstacle(3990,0,20,810);
+		
+	add(ii);
+	add(i);
+	add(one);
+	add(two);
+	add(three);
+	add(four);
+	add(five);
+	add(six);
+	add(seven);
+	add(eight);
+	add(nine);
+	add(ten);
+	add(eleven);
+	add(twelve);
+	add(thirteen);
+	add(fourteen);
+	add(fifteen);
+	add(sixteen);
+	add(seventeen);
+	add(eighteen);
+	add(nineteen);
+	add(twenty);
+	add(twentyone);
+	add(twentytwo);
+	add(twentythree);
+	add(twentyfour);
+	add(twentyfive);
+	add(twentysix);
+	add(twentyseven);
+	add(twentyeight);
+	add(twentynine);
+	add(thirty);
+	add(thirtyone);
+	add(thirtytwo);
+	add(thirtythree);
+	add(thirtyfour);
+	add(thirtyfive);
+	add(thirtysix);
+	add(thirtyseven);
+	add(thirtyeight);
+	add(thirtynine);
+	add(forty);
+	
+	}
+	
+	public void makeObstacles2() {
+		Obstacle i = new Obstacle(0,800,4000,20); //floor
+		Obstacle ii = new Obstacle(0,0,4000,20);  //ceiling
+		Obstacle one = new Obstacle(0,700,200,10);
+		Obstacle two = new Obstacle(200,500,200,10);
+		Obstacle three = new Obstacle(400,450,100,10);
+		Obstacle four = new Obstacle(500,200,200,10);
+		Obstacle five = new Obstacle(700,600,200,10);
+		Obstacle six = new Obstacle(900,500,150,10);
+		Obstacle seven = new Obstacle(1050,200,250,10);
+		Obstacle eight = new Obstacle(1200,700,150,10);
+		Obstacle nine = new Obstacle(1350,300,200,10);
+		Obstacle ten = new Obstacle(1550,200,250,10);
+		Obstacle eleven = new Obstacle(1750,400,150,10);
+		Obstacle twelve = new Obstacle(1900,300,200,10);
+		Obstacle thirteen = new Obstacle(2100,200,200,10);
+		Obstacle fourteen = new Obstacle(2300,600,200,10);
+		Obstacle fifteen = new Obstacle(2500,700,200,10);
+		Obstacle sixteen = new Obstacle(2700,100,100,10);
+		Obstacle seventeen = new Obstacle(2800,700,250,10);
+		Obstacle eighteen = new Obstacle(3050,200,150,10);
+		Obstacle nineteen = new Obstacle(3300,300,200,10);
+		Obstacle twenty = new Obstacle(3500,400,200,10);
+		Obstacle twentyone = new Obstacle(3700,500,150,10);
+		Obstacle twentytwo = new Obstacle(3850,400,150,10);
+		Obstacle twentythree = new Obstacle(0,350,250,10);
+		Obstacle twentyfour = new Obstacle(350,675,150,10);
+		Obstacle twentyfive = new Obstacle(700,750,100,10);
+		Obstacle twentysix = new Obstacle(750,150,200,10);
+		Obstacle twentyseven = new Obstacle(1550,600,150,10);
+		Obstacle twentyeight = new Obstacle(1700,700,100,10);
+		Obstacle twentynine = new Obstacle(1400,500,220,10);
+		Obstacle thirty = new Obstacle(2100,500,150,10);
+		Obstacle thirtyone = new Obstacle(2300,400,250,10);
+		Obstacle thirtytwo = new Obstacle(2500,550,150,10);
+		Obstacle thirtythree = new Obstacle(2650,600,100,10);
+		Obstacle thirtyfour = new Obstacle(2800,500,200,10);
+		Obstacle thirtyfive = new Obstacle(2900,700,300,10);
+		Obstacle thirtysix = new Obstacle(3000,400,200,10);
+		Obstacle thirtyseven = new Obstacle(3200,600,150,10);
+		Obstacle thirtyeight = new Obstacle(3500,700,200,10);
+		Obstacle thirtynine = new Obstacle(3700,600,100,10);
+		Obstacle forty = new Obstacle(3990,0,10,800);
+		
+		add(ii);
+		add(i);
 		add(one);
 		add(two);
 		add(three);
 		add(four);
- 		add(five);
- 		add(six);
- 		add(seven);
- 		add(eight);
- 		add(nine);
- 		add(ten);
- 		add(eleven);
- 		add(twelve);
- 		add(thirteen);
- 		add(fourteen);
- 		add(fifteen);
- 		add(sixteen);
- 	//	add(seventeen);
- 		add(eighteen);
- 		add(nineteen);
- 		add(twenty);
- 		add(xxi);
-	//	add(xxii);
- 		add(xxiii);
- 		add(xxiv);
- 		add(xxv);
- 		add(xxvi);
- 		add(xxvii);
- 		add(xxviii);
- 		add(xxix);
- 		add(xxx);
- 		add(xxxi);
- 		add(xxxii);
+		add(five);
+		add(six);
+		add(seven);
+		add(eight);
+		add(nine);
+		add(ten);
+		add(eleven);
+		add(twelve);
+		add(thirteen);
+		add(fourteen);
+		add(fifteen);
+		add(sixteen);
+		add(seventeen);
+		add(eighteen);
+		add(nineteen);
+		add(twenty);
+		add(twentyone);
+		add(twentytwo);
+		add(twentythree);
+		add(twentyfour);
+		add(twentyfive);
+		add(twentysix);
+		add(twentyseven);
+		add(twentyeight);
+		add(twentynine);
+		add(thirty);
+		add(thirtyone);
+		add(thirtytwo);
+		add(thirtythree);
+		add(thirtyfour);
+		add(thirtyfive);
+		add(thirtysix);
+		add(thirtyseven);
+		add(thirtyeight);
+		add(thirtynine);
+		add(forty);
 	}
+	
+	public void makeObstacles3() {
+		
+	}
+
 
 }

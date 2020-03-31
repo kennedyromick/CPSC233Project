@@ -1,3 +1,8 @@
+
+import javafx.scene.shape.Rectangle;
+
+public class Enemy extends Moveable
+{	
 package FinalProject;
 
 import javafx.scene.shape.Rectangle;
@@ -8,4 +13,5 @@ public class Enemy extends Rectangle
 	{
 		super(x, y, width, height);
 	}
+}
 }
