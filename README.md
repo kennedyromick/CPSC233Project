@@ -1,6 +1,6 @@
 ### Group 10, T03
 # ASTROBLAST!
-ASTROBLAST! is a single player platform animation side scroller game (gameplay is viewed from a side-view camera angle). The player moves through various platforms, while avoiding objects, to complete an objective. The application asks the user for input on the player’s move and responds appropriately to that movement, as well as checking if any obstacles have been hit/not overcome. Progression to the next level or failure is determined by time limit or successful passage of all obstacles.
+ASTROBLAST! is a single player platform animation side scroller game (gameplay is viewed from a side-view camera angle). The player moves through various platforms, while avoiding objects, to complete an objective. The application asks the user for input on the player’s move and responds appropriately to that movement, as well as checking if any obstacles have been hit/not overcome. Progression to the next level or failure is determined by successful passage of all obstacles to reach the end of the level.
 
 ## Foundations
 ### Class Diagram 
@@ -18,15 +18,15 @@ Follow the instructions below to set up the game and rules/directions for gamepl
 5. Launch **Eclipse** workspace, create a **New Java Project**, create a **new package**, import cloned repository in the project (exclusing Obstacle1.java and Animation.java). Rename 
 
 ### Instructions
-The objective of the game is to complete the level with the fewest collisions possible, and without dying in the harder levels.
+The objective of the game is to complete the level without colliding into any enemies.
 ##### Controls
-Use the keyboard arrows to control motion: "^" jump, ">" forward, "<" backward. The avatar cannot move through obstacles (black blocks), and loses velocity upon collision. 
+Use the keyboard arrows to control motion: ">" right and "<" left. The up and down arrow keys reverse gravity. There is no jump feature, with reverse gravity the avatar is continuously moving upwards or downwards until they collide with a platform.
 ##### Level One
-Avatar cannot die. Non-moving, non-lethal objects only. 
+Player cannot die. No enemies are presented, only black platforms. This level is an opprotunity to get use to the movement of the avatar for future levels. To complete the level move right until the vertical wall is hit, this will bring you to level 2.
 ##### Level Two
-Player killed instantly by falling into gaps. All other obstacles, collisions and enemies decrease health (3 hearts). Some moving objects; simple, isolated enemies. 
+Player can now die by colliding into enemies (red). Same movement and objective as level one, however with the addition of avoiding enemies.
 ##### Level Three
-Limited number of collisions allowed: health decreases with collisions. Enemies and timed attacks present; one hit = loss of one life. Avatar velocity increased.
+COMING SOON
 
 ## Contributors
 Kennedy Romick,
