@@ -1,3 +1,4 @@
+package FinalProject;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -20,8 +21,8 @@ public class GameGUI extends Application{
 	ObstacleList obstacleList2 = new ObstacleList(2);
 	RunnerList runnerList2 = new RunnerList(2);
 	
-	Avatar avatar = new Avatar(10,765,25,25);
-	Avatar avatar2 = new Avatar(50,765,25,25);
+	Avatar avatar = new Avatar(600,765,25,25);
+	Avatar avatar2 = new Avatar(600,765,25,25);
 	
 	
 	
@@ -33,7 +34,7 @@ public class GameGUI extends Application{
 	
 	public void start(Stage primaryStage) {
 
-		primaryStage.setTitle("Astroblast!");
+		primaryStage.setTitle("ASTROBLAST!");
 		
 		Group root = new Group();
 		Scene theScene = new Scene(root);
@@ -82,11 +83,6 @@ public class GameGUI extends Application{
      							     				   	{
      							     				   	for(Obstacle p: obstacleList2) {
      						     							avatar2.collisionCheck(p);
-     						     							if(p==obstacleList2.get(41)) {
-     						     								if(avatar2.intersects(p)) {
-     						     									System.exit(0);
-     						     								}
-     						     							}
      						     						}
      						     						if(avatar2.reverse == false) 
      						     						{
@@ -159,3 +155,6 @@ public class GameGUI extends Application{
 	
 
 }
+
+
+
