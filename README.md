@@ -15,7 +15,7 @@ Follow the instructions below to set up the game and rules/directions for gamepl
 3. Open the terminal, change the directory to the one you would like the files to be cloned to. 
 4. Type `git clone` and paste the URL copied in step 2. Then press **Enter** to create a local clone.
   > `git clone https://github.com/<your-username>/<your-repository>`
-5. Launch **Eclipse** workspace, create a **New JavaFX Project**, create a **new package** called FinalProject, import the **src** from the cloned repository into the FinalProject package. Run the project as a Java Application.
+5. Launch **Eclipse** workspace, create a **New JavaFX Project**, create a **new package** called FinalProject, import the **src** from the cloned repository into the FinalProject package. Run the GameGUI class as a Java Application.
 
 ### Instructions
 The objective of the game is to complete each level without dying by touching the floor (FEATURE COMING SOON) or colliding into any enemies where they are present. 
