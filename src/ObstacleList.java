@@ -90,7 +90,7 @@ public class ObstacleList extends ArrayList<Obstacle>
 	public void makeObstacles3() {
 		int counter = 0;
 		Obstacle i = new Obstacle(0,800,615,20); //floor
-		Obstacle iii = new Obstacle(3990,0,20,820); //end
+		Obstacle iii = new Obstacle(4490,0,20,820); //end
 		add(i);
 		add(iii);
 		int n = 4500;
