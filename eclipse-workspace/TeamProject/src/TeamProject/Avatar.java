@@ -1,22 +1,27 @@
 package TeamProject;
 
-import javafx.scene.shape.Rectangle;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
-public class Avatar extends Rectangle
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-{
+public class Avatar extends Moveable {
 
-	private double velocityX, velocityY;
 	boolean collisionY1 = false;
 	boolean collisionY2 = false;
 	boolean collisionX1 = false;
 	boolean collisionX2 = false;
+	boolean canJump = false;
+	boolean reverse = true;
+	private int w;
+	private int h;
+	private Image image;
 
-	
+
 	public Avatar(double x, double y, double width, double height) {
 		super(x, y, width, height);
-		velocityX = 0;
-		velocityY = 0;
 	}
 
 	
@@ -37,73 +42,69 @@ public class Avatar extends Rectangle
 		else if(getY() == o.getY()+o.getHeight()) {
 			if((getX()>= o.getX() && getX()<= o.getX()+o.getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+o.getWidth())) {
 			collisionY2 = true;
+			canJump = true;
 			}
 		}
-		// moving down
+
+	// moving down
 		else if(getY()+getHeight() == o.getY()) {
 			if((getX()>= o.getX() && getX()<= o.getX()+o.getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+o.getWidth())) {
 			collisionY1 = true;
+			canJump = true;
 			}
 		}
 	}
-	public void grav() {
-		collisionX2 = false;
-		collisionY2 = false;
-		collisionX1 = false;
-		if(collisionY1 == false) {
-		velocityY = 0.10;
-		double y = getY();
-		y += velocityY;
-		setY(y);
-		}
-	}
-	
+
 	public void moveUp() {
 		collisionX2 = false;
 		collisionX1 = false;
 		collisionY1 = false;
 		if(collisionY2 == false) {
-		velocityY = -5.0;
-		double y = getY();
-		y += velocityY;
-		setY(y);
+		super.moveUp();
 		}
 	}
+
 	public void moveDown() {
 		collisionX2 = false;
 		collisionY2 = false;
 		collisionX1 = false;
 		if(collisionY1 == false) {
-		velocityY = 5.0;
-		double y = getY();
-		y += velocityY;
-		setY(y);
+		super.moveDown();
 		}
 	}
+
 	public void moveLeft() {
 		collisionX1 = false;
 		collisionY2 = false;
 		collisionY1 = false;
 		if(collisionX2 == false) {
-		velocityX = -5.0;
-		double x = getX();
-		x += velocityX;
-		setX(x);
+		super.moveLeft();
 		}
 	}
+
 	public void moveRight() {
 		collisionX2 = false;
 		collisionY2 = false;
 		collisionY1 = false;
 		if(collisionX1 == false) {
-		velocityX = 5.0;
-		double x = getX();
-		x += velocityX;
-		setX(x);
+		super.moveRight();
 		}
 	}
 
+	public void jump() {	
+		if (canJump == false || collisionY2 == false) {
+			reverse = false;
+			super.jump();
+		}
 
+	}
+
+	public void grav() {
+		if (canJump == false || collisionY1 == false) {
+			reverse = true;
+		super.grav();
+	}
+	}
+
+	
 }
-
-

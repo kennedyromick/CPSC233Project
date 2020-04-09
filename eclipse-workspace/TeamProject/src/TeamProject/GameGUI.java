@@ -22,12 +22,15 @@ public class GameGUI extends Application{
 	ArrayList<Obstacle> obstacleList = new ArrayList<Obstacle>();
 	
 	Avatar avatar = new Avatar(0,765,35,35);
+	
+
+	
 	Obstacle one = new Obstacle(0,800,1350,50);
 	Obstacle two = new Obstacle(300,725,200,50);
 	Obstacle three = new Obstacle(500,650,100,50);
 	Obstacle four = new Obstacle(600,725,200,50);
 	Obstacle five = new Obstacle(250,575,200,50);
-	//Obstacle six = new Obstacle(800,800,200,50);
+	Obstacle six = new Obstacle(0,0,1350,50);
 	Obstacle seven = new Obstacle(150,500,100,50);
 	Obstacle eight = new Obstacle(0,425,150,50);
 	Obstacle nine = new Obstacle(650,575,200,50);
@@ -48,11 +51,13 @@ public class GameGUI extends Application{
 	   }
 	
 	public void start(Stage primaryStage) {
+
 		primaryStage.setTitle("Astroblast!");
 		
 		Group root = new Group();
 		Scene theScene = new Scene(root);
 		primaryStage.setScene(theScene);
+		
 
 		AvatarMovement avatarHandler = new AvatarMovement(avatar);
 		theScene.setOnKeyPressed(avatarHandler);
@@ -62,7 +67,7 @@ public class GameGUI extends Application{
 		root.getChildren().add(canvas);
 		
 		avatar.setFill(Color.BLUE);
-		root.getChildren().addAll(avatar, one, two, three, four, five, seven, eight, nine);
+		root.getChildren().addAll(avatar, one, two, three, four, five, six, seven, eight, nine);
 		root.getChildren().addAll(ten, eleven, tweleve, thirteen, fourteen, fifteen, sixteen);
 		
      	createObjList();
@@ -75,11 +80,14 @@ public class GameGUI extends Application{
      				   	public void handle(ActionEvent event)
      				   	{
      						for(Obstacle o: obstacleList) {
-         						//avatar.grav();
      							avatar.collisionCheck(o);
      							}
-
-     						
+     						if(avatar.reverse == false) {
+     							avatar.jump();
+     						}
+     						else if(avatar.reverse == true) {
+        						avatar.grav();
+     						}
 
      						}
      				   }
@@ -99,7 +107,7 @@ public class GameGUI extends Application{
 		obstacleList.add(three);
 		obstacleList.add(four);
 		obstacleList.add(five);
-		//obstacleList.add(six);
+		obstacleList.add(six);
 		obstacleList.add(seven);
 		obstacleList.add(eight);
 		obstacleList.add(nine);

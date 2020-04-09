@@ -7,22 +7,49 @@ public class AvatarMovement implements EventHandler<KeyEvent>{
 	
 	private Avatar avatar;
 	
+	
 	public AvatarMovement(Avatar avatar) {
 		this.avatar = avatar;
 	}
-	
+
+
 	@Override
+
 	public void handle(KeyEvent e) {
+
 		switch(e.getCode()) {
-		case RIGHT: avatar.moveRight();
+
+		case RIGHT: if(avatar.getX() <= 1310) {avatar.moveRight();}
 			break;
-		case LEFT: avatar.moveLeft();
+
+		case LEFT: if(avatar.getX() >= 5) {avatar.moveLeft();}
 			break;
-		case UP: avatar.moveUp();
+			
+		case UP:if(avatar.getY() >= 5) {avatar.jump();}
 			break;
-		case DOWN: avatar.moveDown();
+
+		case DOWN:if(avatar.getY() <= 800) { avatar.grav();}
 			break;
+
 		}
+
 	}
+
+
+
+
+//	@Override
+//	public void handle(KeyEvent e) {
+//		switch(e.getCode()) {
+//		case RIGHT: avatar.moveRight();
+//			break;
+//		case LEFT: avatar.moveLeft();
+//			break;
+//		case UP: avatar.moveUp();
+//			break;
+//		case DOWN: avatar.moveDown();
+//			break;
+//		}
+//	}
 
 }
