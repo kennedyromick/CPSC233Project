@@ -1,5 +1,3 @@
-package FinalProject;
-
 import javafx.scene.shape.Rectangle;
 
 public class Moveable extends Rectangle{
@@ -14,14 +12,14 @@ public class Moveable extends Rectangle{
 	}
 
 	public void moveUp() {
-		velocityY = -2.0;
+		velocityY = -5.0;
 		double y = getY();
 		y += velocityY;
 		setY(y);
 	}
 
 	public void moveDown() {
-		velocityY = 2.0;
+		velocityY = 5.0;
 		double y = getY();
 		y += velocityY;
 		setY(y);
@@ -55,18 +53,19 @@ public class Moveable extends Rectangle{
 	}
 
 	public void jump() {	
-		velocityY =-1.25;
+		velocityY =-5.0;
 		double y = getY();
 		y += velocityY;
 		setY(y);
 		}
 
 	public void grav() {
-		velocityY =1.25;
+		velocityY =5.0;
 		double y = getY();
 		y += velocityY;
 		setY(y);
 	}
 	
+
 
 }

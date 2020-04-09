@@ -1,4 +1,4 @@
-package FinalProject;
+
 import javafx.scene.shape.Rectangle;
 
 
@@ -53,6 +53,9 @@ public void collisionCheck(Obstacle o) {
 		canJump = true;
 		}
 	}
+	else if(getY()<=19 || getY()+getHeight()>=801) {
+		System.exit(0);
+	}
 }
 
 
@@ -70,7 +73,7 @@ public void collisionCheck(Obstacle o) {
 		}
 	}
 
-	public void moveRight(ObstacleList o, RunnerList e) {
+	public void moveRight(ObstacleList o, RunnerList e, EnemyList q) {
 		collisionX2 = false;
 		collisionY2 = false;
 		collisionY1 = false;
@@ -80,6 +83,9 @@ public void collisionCheck(Obstacle o) {
 			}
 			for(Runner en: e) {
 				en.moveLeft();
+			}
+			for(Enemy em: q) {
+				em.moveLeft();
 			}
 		}
 	}

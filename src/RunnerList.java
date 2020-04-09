@@ -1,4 +1,3 @@
-package FinalProject;
 import java.util.ArrayList;
 
 import javafx.scene.paint.Color;
@@ -19,43 +18,101 @@ public class RunnerList extends ArrayList<Runner> {
 	}
 	public void makeRunners2()
 	{	
-		Runner e1 = new Runner(1300, 730, 30, 30, 50, 50, 600, 810, 0, 3);
-		Runner e2 = new Runner(3000, 460, 50, 30, 300, 300, 450, 547, 0, 2);
-		Runner e3 = new Runner(6000, 547, 50, 30, 590, 680, 460, 460, 2, 0);
-		Runner e4 = new Runner(1200, 460, 50, 50, 500, 500, 450, 547, 0, 2);
-		Runner e5 = new Runner(2500, 660, 30, 30, 600, 600, 650, 800, 0, 2);
-		Runner e6 = new Runner(4000, 460, 50, 30, 300, 300, 450, 547, 0, 2);
-		Runner e7 = new Runner(3000, 460, 50, 30, 300, 300, 450, 547, 0, 2);
-		Runner e8 = new Runner(3300, 460, 50, 30, 300, 300, 450, 547, 0, 2);
-		Runner e9 = new Runner(3300, 460, 50, 30, 300, 300, 450, 547, 0, 2);
-		Runner e10 = new Runner(4000, 600, 50, 30, 300, 300, 450, 547, 0, 2);
-		Runner e11 = new Runner(4200, 460, 50, 30, 300, 300, 450, 547, 0, 2);
-		Runner e12 = new Runner(6000, 547, 50, 30, 590, 680, 460, 460, 2, 0);
-		Runner e13 = new Runner(5000, 460, 50, 50, 500, 500, 450, 547, 0, 2);
-		Runner e14 = new Runner(5500, 660, 30, 30, 600, 600, 650, 800, 0, 2);
+		int counter = 0;
+		int n = 2000;
+		int x = 500;
+		int y = 00;
+		int width = 30;
+		int height = 30;
+		int yCount = 0;
+		int disCount = 0;
+		int vel = 2;
+		int disMoved = 150;
+		int [] yValues = {700,550,200,150,300,400,650,500,600,100,350,730,700,120,140};
+		int [] dis = {50,100,150,200,75,175};
 		
-		add(e1);
-		add(e2);
-		add(e3);
-		add(e4);
-		add(e5);
-		add(e6);
-		add(e7);
-		add(e8);
-		add(e9);
-		add(e10);
-		add(e11);
-		add(e12);
-		add(e13);
-		add(e14);
+		while(x<n) {
+			x+= 100;
+			while(counter<=38) {
+				if(counter%2 == 0) {
+					add(new Runner(x,y,width,height,y-5,y+disMoved,vel));
+					y = yValues[yCount];
+					disMoved = dis[disCount];
+					yCount = yCount +1;
+					disCount = disCount +1;
+					x+= 100;
+					counter = counter +1;
+					if(yCount == 15) {
+						yCount = 0;
+					}
+					if(disCount == 6) {
+						disCount = 0;
+					}
+				}
+				else if(counter%2 == 1) {
+					add(new Runner(x,y-disMoved,width,height,y-disMoved-1,y,vel));
+					y = yValues[yCount];
+					yCount = yCount +1;
+					x+= 100;
+					counter = counter +1;
+					if(yCount == 11) {
+						yCount = 0;
+					}
+				}
+			}
+			y=0;
+		}
+		
 	}
 	
 	public void makeRunners1() {
-		Runner first = new Runner(0,0,0,0,0,0,0,0,0,0);
 	}
 	
 	public void makeRunners3() {
+		int counter = 0;
+		int n = 2000;
+		int x = 500;
+		int y = 00;
+		int width = 30;
+		int height = 30;
+		int yCount = 0;
+		int disCount = 0;
+		int vel = 2;
+		int disMoved = 150;
+		int [] yValues = {700,550,200,150,300,400,650,500,600,100,350,730,700,120,140};
+		int [] dis = {50,100,150,200,75,175};
 		
+		while(x<n) {
+			x+= 100;
+			while(counter<=76) {
+				if(counter%2 == 0) {
+					add(new Runner(x,y,width,height,y-5,y+disMoved,vel));
+					y = yValues[yCount];
+					disMoved = dis[disCount];
+					yCount = yCount +1;
+					disCount = disCount +1;
+					x+= 30;
+					counter = counter +1;
+					if(yCount == 15) {
+						yCount = 0;
+					}
+					if(disCount == 6) {
+						disCount = 0;
+					}
+				}
+				else if(counter%2 == 1) {
+					add(new Runner(x,y-disMoved,width,height,y-disMoved-1,y,vel));
+					y = yValues[yCount];
+					yCount = yCount +1;
+					x+= 100;
+					counter = counter +1;
+					if(yCount == 11) {
+						yCount = 0;
+					}
+				}
+			}
+			y=0;
+	}
 	}
 
 
