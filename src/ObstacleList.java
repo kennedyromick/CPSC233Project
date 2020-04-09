@@ -129,7 +129,7 @@ public class ObstacleList extends ArrayList<Obstacle>
 		
 		while(x<n) {
 			x+= 100;
-			while(counter<=35) {
+			while(counter<=43) {
 				add(new Obstacle(x,y,width,height));
 				y = yValues[yCount];
 				yCount = yCount +1;
