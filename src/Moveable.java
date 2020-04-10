@@ -26,7 +26,7 @@ public class Moveable extends Rectangle{
 	}
 
 	public void moveLeft() {
-		velocityX = -10.0;
+		velocityX = -3.0;
 		double x = getX();
 		x += velocityX;
 		setX(x);
@@ -46,7 +46,7 @@ public class Moveable extends Rectangle{
 	}
 
 	public void moveRight() {
-		velocityX = 10.0;
+		velocityX = 3.0;
 		double x = getX();
 		x += velocityX;
 		setX(x);
@@ -64,6 +64,13 @@ public class Moveable extends Rectangle{
 		double y = getY();
 		y += velocityY;
 		setY(y);
+	}
+	
+	public void setVelX(double d) {
+		velocityX = d;
+	}
+	public void setVelY(double d) {
+		
 	}
 	
 

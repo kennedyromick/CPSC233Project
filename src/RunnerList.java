@@ -84,7 +84,7 @@ public class RunnerList extends ArrayList<Runner> {
 		
 		while(x<n) {
 			x+= 100;
-			while(counter<=76) {
+			while(counter<=52) {
 				if(counter%2 == 0) {
 					add(new Runner(x,y,width,height,y-5,y+disMoved,vel));
 					y = yValues[yCount];

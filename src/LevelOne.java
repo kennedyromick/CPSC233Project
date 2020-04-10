@@ -27,12 +27,13 @@ public class LevelOne {
 	RunnerList runnerList = new RunnerList(1);
 	Avatar avatar = new Avatar(300,765,25,25);
 	EnemyList enemyList = new EnemyList(1);
+	EndList endList = new EndList(1);
 	
 	
 	public void start(Stage primaryStage) {
 
 	
-		AvatarMovement avatarHandler = new AvatarMovement(avatar, obstacleList, runnerList, enemyList);
+		AvatarMovement avatarHandler = new AvatarMovement(avatar, obstacleList, runnerList, enemyList, endList);
 		theScene.setOnKeyPressed(avatarHandler);
 		
 		Canvas canvas = new Canvas(1350,800);
@@ -42,6 +43,7 @@ public class LevelOne {
 		root.getChildren().add(avatar);
 		root.getChildren().addAll(runnerList);
 		root.getChildren().addAll(obstacleList);
+		root.getChildren().addAll(endList);
 		
      	Timeline timeline = new Timeline(
      			new KeyFrame(Duration.millis(10),
@@ -50,23 +52,22 @@ public class LevelOne {
      				   	@Override
      				   	public void handle(ActionEvent event)
      				   	{
-
+								if(avatar.intersects(endList.get(0))) {
+ 									counter = counter+1;
+     								root.getChildren().remove(avatar);
+ 									root.getChildren().removeAll(runnerList);
+ 									root.getChildren().removeAll(obstacleList);
+ 									root.getChildren().removeAll(endList);
+ 								LevelTwo two = new LevelTwo(primaryStage, root, theScene);
+ 								if(counter == 1) {
+ 								two.start(primaryStage);
+ 								}
+ 								}
      						for(Obstacle o: obstacleList) 
      						{
+     							avatar.unCollisionCheck(o);
      							avatar.collisionCheck(o);
-     							if(o == obstacleList.get(2)) {
-     								if(avatar.intersects(o)) {
-     									counter = counter+1;
-         								root.getChildren().remove(avatar);
-     									root.getChildren().removeAll(runnerList);
-     									root.getChildren().removeAll(obstacleList);
-     								LevelTwo two = new LevelTwo(primaryStage, root, theScene);
-     								if(counter == 1) {
-     								two.start(primaryStage);
-     								}
-     								}
      							}
-     						}
      						if(avatar.reverse == false) 
      						{
      							avatar.jump();

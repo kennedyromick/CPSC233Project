@@ -25,24 +25,22 @@ public class LevelTwo {
 	RunnerList runnerList2 = new RunnerList(2);
 	Avatar avatar2 = new Avatar(300,765,25,25);
 	EnemyList enemyList = new EnemyList(2);
+	EndList endList = new EndList(2);
 	
 	
 	public void start(Stage primaryStage) {
 
-//		primaryStage2.setTitle("Astroblast!");
-//		
-//		Group root2 = new Group();
-//		Scene theScene2 = new Scene(root2);
-//		primaryStage2.setScene(theScene2);
 		
 
-		AvatarMovement avatarHandler2 = new AvatarMovement(avatar2, obstacleList2, runnerList2, enemyList);
+		AvatarMovement avatarHandler2 = new AvatarMovement(avatar2, obstacleList2, runnerList2, enemyList, endList);
 			theScene2.setOnKeyPressed(avatarHandler2);
 			
 			avatar2.setFill(Color.BLUE);
 			root2.getChildren().add(avatar2);
 			root2.getChildren().addAll(runnerList2);
 			root2.getChildren().addAll(obstacleList2);
+			root2.getChildren().addAll(endList);
+			
 			
 			Timeline timeline2 = new Timeline(
 	     			new KeyFrame(Duration.millis(10),
@@ -51,20 +49,20 @@ public class LevelTwo {
 	     				   	@Override
 	     				   	public void handle(ActionEvent event)
 	     				   	{
-	     				   	for(Obstacle p: obstacleList2) {
-  							avatar2.collisionCheck(p);
-  							if(p==obstacleList2.get(2)) {
-  								if(avatar2.intersects(p)) {
- 									counter = counter+1;
-     								root2.getChildren().remove(avatar2);
- 									root2.getChildren().removeAll(runnerList2);
- 									root2.getChildren().removeAll(obstacleList2);
- 								LevelThree three = new LevelThree(primaryStage2, root2, theScene2);
+	     				   			if(avatar2.intersects(endList.get(0))) {
+	     				   				counter = counter+1;
+	     				   				root2.getChildren().remove(avatar2);
+	     				   				root2.getChildren().removeAll(runnerList2);
+	     				   				root2.getChildren().removeAll(obstacleList2);
+	     				   				root2.getChildren().removeAll(endList);
+	     				   				LevelThree three = new LevelThree(primaryStage2, root2, theScene2);
  								if(counter == 1) {
  								three.start(primaryStage2);
  								}
   								}
-  							}
+	     				   	for(Obstacle p: obstacleList2) {
+	     				   		avatar2.unCollisionCheck(p);
+	     				   		avatar2.collisionCheck(p);
   						}
   						if(avatar2.reverse == false) 
   						{

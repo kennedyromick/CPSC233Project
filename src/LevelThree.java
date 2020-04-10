@@ -26,11 +26,12 @@ public class LevelThree {
 	RunnerList runnerList3 = new RunnerList(3);
 	Avatar avatar3 = new Avatar(300,765,25,25);
 	EnemyList enemyList = new EnemyList(3);
+	EndList endList = new EndList(3);
 	
 	
 	public void start(Stage primaryStage) {
 
-		AvatarMovement avatarHandler3 = new AvatarMovement(avatar3, obstacleList3, runnerList3, enemyList);
+		AvatarMovement avatarHandler3 = new AvatarMovement(avatar3, obstacleList3, runnerList3, enemyList, endList);
 		theScene3.setOnKeyPressed(avatarHandler3);
 		
 		Canvas canvas = new Canvas(1350,800);
@@ -41,6 +42,7 @@ public class LevelThree {
 		root3.getChildren().addAll(runnerList3);
 		root3.getChildren().addAll(obstacleList3);
 		root3.getChildren().addAll(enemyList);
+		root3.getChildren().addAll(endList);
 		
      	
      	Timeline timeline = new Timeline(
@@ -50,14 +52,16 @@ public class LevelThree {
      				   	@Override
      				   	public void handle(ActionEvent event)
      				   	{
+     				   		if(avatar3.outOfBounds()==true) {
+     				   			System.exit(0);
+     				   		}
+ 								if(avatar3.intersects(endList.get(0))) {
+ 									System.exit(0);
+ 								}
      						for(Obstacle o: obstacleList3) 
      						{
      							avatar3.collisionCheck(o);
-     							if(o == obstacleList3.get(1)) {
-     								if(avatar3.intersects(o)) {
-     									System.exit(0);
-     								}
-     							}
+     							avatar3.unCollisionCheck(o);
      						}
      						if(avatar3.reverse == false) 
      						{

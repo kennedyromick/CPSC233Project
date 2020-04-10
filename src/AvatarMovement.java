@@ -2,31 +2,30 @@ import javafx.event.EventHandler;
 
 import javafx.scene.input.KeyEvent;
 
-
-
 public class AvatarMovement implements EventHandler<KeyEvent>{
 
 	private Avatar avatar;
 	private ObstacleList obstacleList = new ObstacleList(1);
 	private RunnerList runnerList = new RunnerList(1);
 	private EnemyList enemyList = new EnemyList(1);
+	private EndList endList = new EndList(1);
 
-	public AvatarMovement(Avatar avatar, ObstacleList obstacleList, RunnerList runnerList, EnemyList enemyList) {
+	public AvatarMovement(Avatar avatar, ObstacleList obstacleList, RunnerList runnerList, EnemyList enemyList, EndList endList) {
 		this.avatar = avatar;
 		this.obstacleList = obstacleList;
 		this.runnerList = runnerList;
 		this.enemyList = enemyList;
+		this.endList = endList;
 	}
 
 	@Override
 	public void handle(KeyEvent e) {
-
 		switch(e.getCode()) {
 
-		case RIGHT: if(avatar.getX() <= 1350) {avatar.moveRight(obstacleList, runnerList, enemyList);}
+		case RIGHT: if(avatar.getX() <= 1350) {avatar.moveRight(obstacleList, runnerList, enemyList, endList);}
 			break;
 
-		case LEFT: if(avatar.getX() >= 5) {avatar.moveLeft(obstacleList, runnerList);}
+		case LEFT: if(avatar.getX() >= 5) {avatar.moveLeft(obstacleList, runnerList, endList);}
 			break;
 
 		case UP:if(avatar.getY() >= 5) {avatar.jump();}
@@ -38,7 +37,5 @@ public class AvatarMovement implements EventHandler<KeyEvent>{
 		}
 
 	}
-
 }
-
 
