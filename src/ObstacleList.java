@@ -135,7 +135,7 @@ public class ObstacleList extends ArrayList<Obstacle>
 	
 	public void makeObstacles3() {
 		int counter = 0;
-		Obstacle i = new Obstacle(0,800,615,20); //floor
+		Obstacle i = new Obstacle(0,780,615,20); //floor
 		add(i);
 		int n = 4500;
 		int x = 500;
@@ -169,7 +169,7 @@ public class ObstacleList extends ArrayList<Obstacle>
 		int width = 120;
 		int height = 20;
 		int yCount = 0;
-		int [] yValues = {0,800,0,800,0,800,0,800,0,800,0};	
+		int [] yValues = {0,780,0,800,0,780,0,780,0,780,0};	
 		
 		while(x<n) {
 			x+= 100;

@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -19,6 +21,19 @@ public class LevelTwo {
 		theScene2 = scene;
 		this.root2 = root;
 		primaryStage2 = stage;
+	}
+	public ImageView prepareImageView() {
+		Image image = new Image(LevelTwo.class.getResourceAsStream("gameBackground.jpg"));
+		ImageView imageView = new ImageView(image);
+	      //Setting the position of the image 
+	      imageView.setX(0); 
+	      imageView.setY(0); 
+	      
+	      //setting the fit height and width of the image view 
+	      imageView.setFitHeight(800); 
+	      imageView.setFitWidth(5000); 
+		imageView.setPreserveRatio(true);
+		return imageView;
 	}
 	
 	ObstacleList obstacleList2 = new ObstacleList(2);
@@ -35,7 +50,17 @@ public class LevelTwo {
 		AvatarMovement avatarHandler2 = new AvatarMovement(avatar2, obstacleList2, runnerList2, enemyList, endList);
 			theScene2.setOnKeyPressed(avatarHandler2);
 			
-			avatar2.setFill(Color.BLUE);
+			avatar2.setFill(Color.LIGHTBLUE);
+			for(Obstacle o: obstacleList2) {
+				o.setFill(Color.WHITE);
+			}
+			for(End e: endList) {
+				e.setFill(Color.WHITE);
+			}
+			for(Runner r: runnerList2) {
+				r.setFill(Color.LIGHTGREEN);
+			}
+			root2.getChildren().add(prepareImageView());
 			root2.getChildren().add(avatar2);
 			root2.getChildren().addAll(runnerList2);
 			root2.getChildren().addAll(obstacleList2);

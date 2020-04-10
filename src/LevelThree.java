@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -22,9 +24,23 @@ public class LevelThree {
 		primaryStage3 = stage;
 	}
 	
+	public ImageView prepareImageView() {
+		Image image = new Image(LevelOne.class.getResourceAsStream("gameBackground.jpg"));
+		ImageView imageView = new ImageView(image);
+	      //Setting the position of the image 
+	      imageView.setX(0); 
+	      imageView.setY(0); 
+	      
+	      //setting the fit height and width of the image view 
+	      imageView.setFitHeight(800); 
+	      imageView.setFitWidth(5000); 
+		imageView.setPreserveRatio(true);
+		return imageView;
+	}
+	
 	ObstacleList obstacleList3 = new ObstacleList(3);
 	RunnerList runnerList3 = new RunnerList(3);
-	Avatar avatar3 = new Avatar(300,765,25,25);
+	Avatar avatar3 = new Avatar(300,755,25,25);
 	EnemyList enemyList = new EnemyList(3);
 	EndList endList = new EndList(3);
 	
@@ -37,7 +53,20 @@ public class LevelThree {
 		Canvas canvas = new Canvas(1350,800);
 		root3.getChildren().add(canvas);
 		
-		avatar3.setFill(Color.BLUE);
+		avatar3.setFill(Color.LIGHTBLUE);
+		for(Obstacle o: obstacleList3) {
+			o.setFill(Color.WHITE);
+		}
+		for(End e: endList) {
+			e.setFill(Color.WHITE);
+		}
+		for(Runner r: runnerList3) {
+			r.setFill(Color.LIGHTGREEN);
+		}
+		for(Enemy e: enemyList) {
+			e.setFill(Color.BROWN);
+		}
+		root3.getChildren().add(prepareImageView());
 		root3.getChildren().add(avatar3);
 		root3.getChildren().addAll(runnerList3);
 		root3.getChildren().addAll(obstacleList3);

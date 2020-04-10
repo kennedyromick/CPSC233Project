@@ -6,6 +6,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -21,6 +23,20 @@ public class LevelOne {
 		theScene = scene;
 		this.root = root;
 		primaryStage = stage;
+	}
+	
+	public ImageView prepareImageView() {
+		Image image = new Image(LevelOne.class.getResourceAsStream("gameBackground.jpg"));
+		ImageView imageView = new ImageView(image);
+	      //Setting the position of the image 
+	      imageView.setX(0); 
+	      imageView.setY(0); 
+	      
+	      //setting the fit height and width of the image view 
+	      imageView.setFitHeight(800); 
+	      imageView.setFitWidth(5000); 
+		imageView.setPreserveRatio(true);
+		return imageView;
 	}
 	
 	ObstacleList obstacleList = new ObstacleList(1);
@@ -39,7 +55,14 @@ public class LevelOne {
 		Canvas canvas = new Canvas(1350,800);
 		root.getChildren().add(canvas);
 		
-		avatar.setFill(Color.BLUE);
+		avatar.setFill(Color.LIGHTBLUE);
+		for(Obstacle o: obstacleList) {
+			o.setFill(Color.WHITE);
+		}
+		for(End e: endList) {
+			e.setFill(Color.WHITE);
+		}
+		root.getChildren().add(prepareImageView());
 		root.getChildren().add(avatar);
 		root.getChildren().addAll(runnerList);
 		root.getChildren().addAll(obstacleList);
