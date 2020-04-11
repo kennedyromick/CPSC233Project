@@ -11,6 +11,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -40,6 +43,7 @@ public class LevelOne {
 		imageView.setPreserveRatio(true);
 		return imageView;
 	}
+
 	
 	ObstacleList obstacleList = new ObstacleList(1);
 	RunnerList runnerList = new RunnerList(1);
@@ -53,6 +57,13 @@ public class LevelOne {
 	
 		AvatarMovement avatarHandler = new AvatarMovement(avatar, obstacleList, runnerList, enemyList, endList);
 		theScene.setOnKeyPressed(avatarHandler);
+		
+		Text text = new Text();      
+	    text.setText("LEVEL 1"); 
+	    text.setFont(Font.font(null, FontWeight.BOLD, 25));
+	    text.setX(50); 
+	    text.setY(100); 
+	    text.setFill(Color.WHITE);
 		
 		Canvas canvas = new Canvas(1350,800);
 		root.getChildren().add(canvas);
@@ -69,6 +80,7 @@ public class LevelOne {
 		root.getChildren().addAll(runnerList);
 		root.getChildren().addAll(obstacleList);
 		root.getChildren().addAll(endList);
+		root.getChildren().addAll(text);
 		
      	Timeline timeline = new Timeline(
      			new KeyFrame(Duration.millis(10),

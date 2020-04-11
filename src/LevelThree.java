@@ -9,6 +9,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -47,6 +50,13 @@ public class LevelThree {
 	
 	
 	public void start(Stage primaryStage) {
+		
+		Text text = new Text();      
+	    text.setText("LEVEL 3"); 
+	    text.setFont(Font.font(null, FontWeight.BOLD, 25));
+	    text.setX(50); 
+	    text.setY(100); 
+	    text.setFill(Color.WHITE);
 
 		AvatarMovement avatarHandler3 = new AvatarMovement(avatar3, obstacleList3, runnerList3, enemyList, endList);
 		theScene3.setOnKeyPressed(avatarHandler3);
@@ -73,7 +83,7 @@ public class LevelThree {
 		root3.getChildren().addAll(obstacleList3);
 		root3.getChildren().addAll(enemyList);
 		root3.getChildren().addAll(endList);
-		
+		root3.getChildren().addAll(text);	
      	
      	Timeline timeline = new Timeline(
      			new KeyFrame(Duration.millis(10),

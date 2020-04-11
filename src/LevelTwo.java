@@ -10,6 +10,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -46,9 +49,15 @@ public class LevelTwo {
 	
 	
 	public void start(Stage primaryStage) {
-
 		
+		Text text = new Text();      
+	    text.setText("LEVEL 2"); 
+	    text.setFont(Font.font(null, FontWeight.BOLD, 25));
+	    text.setX(50); 
+	    text.setY(100); 
+	    text.setFill(Color.WHITE);
 
+	
 		AvatarMovement avatarHandler2 = new AvatarMovement(avatar2, obstacleList2, runnerList2, enemyList, endList);
 			theScene2.setOnKeyPressed(avatarHandler2);
 			
@@ -67,6 +76,8 @@ public class LevelTwo {
 			root2.getChildren().addAll(runnerList2);
 			root2.getChildren().addAll(obstacleList2);
 			root2.getChildren().addAll(endList);
+			root2.getChildren().addAll(text);
+
 			
 			
 			Timeline timeline2 = new Timeline(
