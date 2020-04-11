@@ -1,4 +1,3 @@
-package FinalProject;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -28,37 +27,17 @@ public class LevelThree {
 		primaryStage3 = stage;
 	}
 	
-	public ImageView prepareImageView() {
-		Image image = new Image(LevelOne.class.getResourceAsStream("stars.jpg"));
-		ImageView imageView = new ImageView(image);
-	      //Setting the position of the image 
-	      imageView.setX(0); 
-	      imageView.setY(0); 
-	      
-	      //setting the fit height and width of the image view 
-	      imageView.setFitHeight(800); 
-	      imageView.setFitWidth(5000); 
-		imageView.setPreserveRatio(true);
-		return imageView;
-	}
 	
 	ObstacleList obstacleList3 = new ObstacleList(3);
 	RunnerList runnerList3 = new RunnerList(3);
 	Avatar avatar3 = new Avatar(300,755,25,25);
-	EnemyList enemyList = new EnemyList(3);
 	EndList endList = new EndList(3);
-	
+	MeteorList meteorList = new MeteorList(3);
+	LevelText text = new LevelText(3);
 	
 	public void start(Stage primaryStage) {
-		
-		Text text = new Text();      
-	    text.setText("LEVEL 3"); 
-	    text.setFont(Font.font(null, FontWeight.BOLD, 25));
-	    text.setX(50); 
-	    text.setY(100); 
-	    text.setFill(Color.WHITE);
 
-		AvatarMovement avatarHandler3 = new AvatarMovement(avatar3, obstacleList3, runnerList3, enemyList, endList);
+		AvatarMovement avatarHandler3 = new AvatarMovement(avatar3, obstacleList3, runnerList3, meteorList, endList);
 		theScene3.setOnKeyPressed(avatarHandler3);
 		
 		Canvas canvas = new Canvas(1350,800);
@@ -71,19 +50,16 @@ public class LevelThree {
 		for(End e: endList) {
 			e.setFill(Color.WHITE);
 		}
-		for(Runner r: runnerList3) {
-			r.setFill(Color.LIGHTGREEN);
+		for(Meteor m : meteorList) {
+			m.setFill(Color.BROWN);
 		}
-		for(Enemy e: enemyList) {
-			e.setFill(Color.BROWN);
-		}
-		root3.getChildren().add(prepareImageView());
 		root3.getChildren().add(avatar3);
 		root3.getChildren().addAll(runnerList3);
 		root3.getChildren().addAll(obstacleList3);
-		root3.getChildren().addAll(enemyList);
 		root3.getChildren().addAll(endList);
-		root3.getChildren().addAll(text);	
+		root3.getChildren().addAll(meteorList);
+		root3.getChildren().add(text);
+		
      	
      	Timeline timeline = new Timeline(
      			new KeyFrame(Duration.millis(10),
@@ -103,11 +79,11 @@ public class LevelThree {
      							avatar3.collisionCheck(o);
      							avatar3.unCollisionCheck(o);
      						}
-     						if(avatar3.reverse == false) 
+     						if(avatar3.getReverse() == false) 
      						{
      							avatar3.jump();
      						}
-     						else if(avatar3.reverse == true) 
+     						else if(avatar3.getReverse() == true) 
      						{
         						avatar3.grav();
      						}
@@ -123,28 +99,65 @@ public class LevelThree {
       							}
          				   	for(Runner r: runnerList3) {
          						r.updateLocation();
-         						if(r.leftEnd != r.rightEnd) {
-         							 if(r.getX()<= r.leftEnd) {
+         						if(r.getLeftEnd() != r.getRightEnd()) {
+         							 if(r.getX()<= r.getLeftEnd()) {
          								 r.reverseX();
          							 }
-         							 else if(r.getX()>= r.rightEnd) {
+         							 else if(r.getX()>= r.getRightEnd()) {
          								r.reverseX();
          							 }
          						 }
-         						 if(r.upEnd != r.downEnd) {
-         							 if(r.getY()< r.upEnd) {
+         						 if(r.getUpEnd() != r.getDownEnd()) {
+         							 if(r.getY()< r.getUpEnd()) {
          								 r.reverseY();
          							 }
-         							 if(r.getY()>= r.downEnd) {
+         							 if(r.getY()>= r.getDownEnd()) {
          								 r.reverseY();
          							 }
          						 }
           						}
-         				   for(Enemy e: enemyList) {
-     							if(avatar3.intersects(e)) {
-     								System.exit(0);
-     							}
-     						}
+         				   for(Meteor m: meteorList) {
+    							if(avatar3.intersects(m)) {
+    								System.exit(0);
+    							}
+    						}
+    				   	
+    				   for(Meteor m: meteorList)
+      				 {
+      					m.updateLocation();
+  						if(m.getStartPoint() != m.getEndPoint()) 
+  							{
+  							if(m.getVelX() > 0) {
+  							 	if(m.getX()<= m.getStartPoint()) 
+  							 	{
+  							 		m.reset(m);
+  							 	}
+  							 	else if(m.getX()>= m.getEndPoint()) 
+  							 	{
+  							 		m.reset(m);
+  							 	}
+  							}
+  							}
+  						else if(m.getVelX()<0) {
+  							 	if(m.getX()>= m.getStartPoint()) 
+  							 	{
+  							 		m.reset(m);
+  							 	}
+  							 	else if(m.getX()<= m.getEndPoint()) 
+  							 	{
+  							 		m.reset(m);
+  							 	}
+  						}
+  						 if(m.getUpPoint() != m.getDownPoint()) 
+  						 	{
+  							 if(m.getY()< m.getUpPoint()) {
+  								 m.reset(m);
+  							 }
+  							 if(m.getY()>= m.getDownPoint()) {
+  								 m.reset(m);
+  							 }
+  						 }
+      				 }
      				   }
      				   }
      			)

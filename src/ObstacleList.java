@@ -1,4 +1,3 @@
-package FinalProject;
 import java.util.ArrayList;
 
 public class ObstacleList extends ArrayList<Obstacle>
@@ -170,7 +169,7 @@ public class ObstacleList extends ArrayList<Obstacle>
 		int width = 120;
 		int height = 20;
 		int yCount = 0;
-		int [] yValues = {0,780,0,800,0,780,0,780,0,780,0};	
+		int [] yValues = {0,780,0,780,0,780,0,780,0,780,0};	
 		
 		while(x<n) {
 			x+= 100;

@@ -1,5 +1,3 @@
-package FinalProject;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -10,9 +8,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -27,38 +22,20 @@ public class LevelTwo {
 		this.root2 = root;
 		primaryStage2 = stage;
 	}
-	public ImageView prepareImageView() {
-		Image image = new Image(LevelTwo.class.getResourceAsStream("stars.jpg"));
-		ImageView imageView = new ImageView(image);
-	      //Setting the position of the image 
-	      imageView.setX(0); 
-	      imageView.setY(0); 
-	      
-	      //setting the fit height and width of the image view 
-	      imageView.setFitHeight(800); 
-	      imageView.setFitWidth(5000); 
-		imageView.setPreserveRatio(true);
-		return imageView;
-	}
 	
 	ObstacleList obstacleList2 = new ObstacleList(2);
 	RunnerList runnerList2 = new RunnerList(2);
 	Avatar avatar2 = new Avatar(300,765,25,25);
-	EnemyList enemyList = new EnemyList(2);
+	MeteorList meteorList = new MeteorList(2);
 	EndList endList = new EndList(2);
+	LevelText text = new LevelText(2);
 	
 	
 	public void start(Stage primaryStage) {
-		
-		Text text = new Text();      
-	    text.setText("LEVEL 2"); 
-	    text.setFont(Font.font(null, FontWeight.BOLD, 25));
-	    text.setX(50); 
-	    text.setY(100); 
-	    text.setFill(Color.WHITE);
 
-	
-		AvatarMovement avatarHandler2 = new AvatarMovement(avatar2, obstacleList2, runnerList2, enemyList, endList);
+		
+
+		AvatarMovement avatarHandler2 = new AvatarMovement(avatar2, obstacleList2, runnerList2, meteorList, endList);
 			theScene2.setOnKeyPressed(avatarHandler2);
 			
 			avatar2.setFill(Color.LIGHTBLUE);
@@ -68,16 +45,11 @@ public class LevelTwo {
 			for(End e: endList) {
 				e.setFill(Color.WHITE);
 			}
-			for(Runner r: runnerList2) {
-				r.setFill(Color.LIGHTGREEN);
-			}
-			root2.getChildren().add(prepareImageView());
 			root2.getChildren().add(avatar2);
 			root2.getChildren().addAll(runnerList2);
 			root2.getChildren().addAll(obstacleList2);
 			root2.getChildren().addAll(endList);
-			root2.getChildren().addAll(text);
-
+			root2.getChildren().add(text);
 			
 			
 			Timeline timeline2 = new Timeline(
@@ -93,6 +65,7 @@ public class LevelTwo {
 	     				   				root2.getChildren().removeAll(runnerList2);
 	     				   				root2.getChildren().removeAll(obstacleList2);
 	     				   				root2.getChildren().removeAll(endList);
+	     				   				root2.getChildren().remove(text);
 	     				   				LevelThree three = new LevelThree(primaryStage2, root2, theScene2);
  								if(counter == 1) {
  								three.start(primaryStage2);
@@ -102,11 +75,11 @@ public class LevelTwo {
 	     				   		avatar2.unCollisionCheck(p);
 	     				   		avatar2.collisionCheck(p);
   						}
-  						if(avatar2.reverse == false) 
+  						if(avatar2.getReverse() == false) 
   						{
   							avatar2.jump();
   						}
-  						else if(avatar2.reverse == true) 
+  						else if(avatar2.getReverse() == true) 
   						{
      						avatar2.grav();
   						}
@@ -122,19 +95,19 @@ public class LevelTwo {
   							}
      				   	for(Runner r: runnerList2) {
      						r.updateLocation();
-     						if(r.leftEnd != r.rightEnd) {
-     							 if(r.getX()<= r.leftEnd) {
+     						if(r.getLeftEnd() != r.getRightEnd()) {
+     							 if(r.getX()<= r.getLeftEnd()) {
      								 r.reverseX();
      							 }
-     							 else if(r.getX()>= r.rightEnd) {
+     							 else if(r.getX()>= r.getRightEnd()) {
      								r.reverseX();
      							 }
      						 }
-     						 if(r.upEnd != r.downEnd) {
-     							 if(r.getY()< r.upEnd) {
+     						 if(r.getUpEnd() != r.getDownEnd()) {
+     							 if(r.getY()< r.getUpEnd()) {
      								 r.reverseY();
      							 }
-     							 if(r.getY()>= r.downEnd) {
+     							 if(r.getY()>= r.getDownEnd()) {
      								 r.reverseY();
      							 }
      						 }
