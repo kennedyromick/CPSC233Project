@@ -22,11 +22,11 @@ The objective of the game is to complete each level without dying by touching th
 ##### Controls
 Use the keyboard arrows to control motion: ">" right and "<" left. The up and down arrow keys reverse gravity. There is no jump feature, reverse gravity is in effect, so your avatar will move in the direction (up or down) you choose to send it using the up and down arrow keys, and will switch direction according to the keys or stop moving once it hits a platform. For example, if you press the "up" key once, the avatar will continue to float upwards until you change direction using the "down" key or it hits a platform.
 ##### Level One
-Player cannot die. No enemies are presented, only black platforms. This level is an opportunity to get use to the movement of the avatar for future levels. To complete the level move right until the vertical wall is hit, this will bring you to level 2.
+Player cannot die. No enemies are presented, only white platforms and walls (obstacles). This level is an opportunity to get use to the movement of the avatar for future levels. To complete the level move right until the final vertical wall is hit, this will bring you to level 2.
 ##### Level Two
-Player can now die by colliding into enemies (red). Same movement and objective as level one, however with the addition of avoiding enemies.
+Player can now die by colliding into moving enemies (green). Same movement and objective as level one, however with the addition of avoiding enemies.
 ##### Level Three
-COMING SOON
+Player can die by colliding with moving enemies (green), being hit by meteors (brown) or falling into gaps on the floor and ceiling.
 
 ## Contributors
 Kennedy Romick,
