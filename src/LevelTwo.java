@@ -29,6 +29,7 @@ public class LevelTwo {
 	MeteorList meteorList = new MeteorList(2);
 	EndList endList = new EndList(2);
 	LevelText text = new LevelText(2);
+	GameOver gmOver = new GameOver();
 	
 	
 	public void start(Stage primaryStage) {
@@ -85,12 +86,7 @@ public class LevelTwo {
   						}
    						for(Runner r: runnerList2) {
   							if(avatar2.intersects(r)) {
-  								System.exit(0);
-  							}
-  							}
-   						for(Runner r: runnerList2) {
-  							if(avatar2.intersects(r)) {
-  								System.exit(0);
+  								gmOver.start(primaryStage);
   							}
   							}
      				   	for(Runner r: runnerList2) {

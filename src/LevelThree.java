@@ -34,6 +34,7 @@ public class LevelThree {
 	EndList endList = new EndList(3);
 	MeteorList meteorList = new MeteorList(3);
 	LevelText text = new LevelText(3);
+	GameOver gmOver = new GameOver();
 	
 	public void start(Stage primaryStage) {
 
@@ -69,10 +70,10 @@ public class LevelThree {
      				   	public void handle(ActionEvent event)
      				   	{
      				   		if(avatar3.outOfBounds()==true) {
-     				   			System.exit(0);
+     				   			gmOver.start(primaryStage);
      				   		}
  								if(avatar3.intersects(endList.get(0))) {
- 									System.exit(0);
+ 									gmOver.start(primaryStage);
  								}
      						for(Obstacle o: obstacleList3) 
      						{
@@ -89,12 +90,7 @@ public class LevelThree {
      						}
        						for(Runner r: runnerList3) {
       							if(avatar3.intersects(r)) {
-      								System.exit(0);
-      							}
-      							}
-       						for(Runner r: runnerList3) {
-      							if(avatar3.intersects(r)) {
-      								System.exit(0);
+      								gmOver.start(primaryStage);
       							}
       							}
          				   	for(Runner r: runnerList3) {
@@ -118,7 +114,7 @@ public class LevelThree {
           						}
          				   for(Meteor m: meteorList) {
     							if(avatar3.intersects(m)) {
-    								System.exit(0);
+    								gmOver.start(primaryStage);
     							}
     						}
     				   	
