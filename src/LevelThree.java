@@ -1,3 +1,4 @@
+package FinalProject;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -25,7 +26,7 @@ public class LevelThree {
 	}
 	
 	public ImageView prepareImageView() {
-		Image image = new Image(LevelOne.class.getResourceAsStream("gameBackground.jpg"));
+		Image image = new Image(LevelOne.class.getResourceAsStream("stars.jpg"));
 		ImageView imageView = new ImageView(image);
 	      //Setting the position of the image 
 	      imageView.setX(0); 
