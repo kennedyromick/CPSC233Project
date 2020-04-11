@@ -24,9 +24,9 @@ Use the keyboard arrows to control motion: ">" right and "<" left. The up and do
 ##### Level One
 Player cannot die. No enemies are presented, only white platforms and walls (obstacles). This level is an opportunity to get use to the movement of the avatar for future levels. To complete the level move right until the final vertical wall is hit, this will bring you to level 2.
 ##### Level Two
-Player can now die by colliding into moving enemies (green). Same movement and objective as level one, however with the addition of avoiding enemies.
+Player can now die by colliding into moving enemies (red). Same movement and objective as level one, however with the addition of avoiding enemies.
 ##### Level Three
-Player can die by colliding with moving enemies (green), being hit by meteors (brown) or falling into gaps on the floor and ceiling.
+Player can die by colliding with moving enemies (red), being hit by meteors (brown) or falling into gaps on the floor and ceiling.
 
 ## Contributors
 Kennedy Romick,
