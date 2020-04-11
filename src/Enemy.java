@@ -1,3 +1,4 @@
+package FinalProject;
 import javafx.scene.shape.Rectangle;
 
 public class Enemy extends Moveable

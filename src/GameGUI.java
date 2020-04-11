@@ -1,3 +1,5 @@
+package FinalProject;
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -7,6 +9,9 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -30,15 +35,22 @@ public class GameGUI extends Application{
 	      Application.launch(args);
 	      
 	   }
-	
+
+	 
 	public void start(Stage Stage) {
 		
 		Stage.setTitle("Astroblast!");
 		
-		Group root = new Group();
-		Scene theScene = new Scene(root);
-		Stage.setScene(theScene);
+		Image image = new Image ("file:stars.jpg");
+	    ImageView mv = new ImageView(image);
 		
+		Group root = new Group();
+		root.getChildren().add(mv);
+		
+		Scene theScene = new Scene(root, 1350, 800);
+		Stage.setScene(theScene);
+		Stage.setResizable(true);
+
 
 		LevelOne one = new LevelOne(Stage, root, theScene);
 		one.start(Stage);

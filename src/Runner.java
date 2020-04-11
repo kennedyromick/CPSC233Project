@@ -1,3 +1,4 @@
+package FinalProject;
 import javafx.scene.paint.Color;
 
 public class Runner extends Moveable{

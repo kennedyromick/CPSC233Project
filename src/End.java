@@ -1,4 +1,4 @@
-
+package FinalProject;
 
 import javafx.scene.shape.Rectangle;
 
