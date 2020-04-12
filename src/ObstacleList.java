@@ -2,165 +2,99 @@ import java.util.ArrayList;
 
 public class ObstacleList extends ArrayList<Obstacle>
 {
+	private int counterH = 0;
+	private int counterV = 0;
+	private int end; //length of level
+	private int xH = 500;
+	private int yH = 700;
+	private int yV = 0;
+	private int xV = 500;
+	private int widthV = 200;
+	private int heightV = 10;
+	private int yCountV = 0;
+	private int [] yValuesH = {0,0,700,0,0,700,700,0,700,0,700}; //yvalues for horizontal platforms (looped through)
+	private int [] yValuesV = {685,550,200,150,300,400,650,500,600,130,350}; //yvalues for vertical platforms (looped through)
+	private int widthH = 10;
+	private int heightH = 100;
+	private int yCountH = 0;
+	//limits how many obstacles are made
+	private int limitV; 
+	private int limitH;
 	
-	public ObstacleList(int i)
+	public ObstacleList(int level)
 		{
-		if(i == 1) {
-			makeObstaclesV1();
-			makeObstaclesH1();
+		//creates level one
+		if(level == 1) {
+			end = 2500;
+			limitH = 6;
+			limitV = 12;
+			makeObstaclesV();
+			makeObstaclesH();
+			makeFloors();
 		}
-		else if (i==2) {
-			makeObstaclesV2();
-			makeObstaclesH2();
+		//creates level 2
+		else if (level==2) {
+			end = 5000;
+			limitH = 17;
+			limitV = 35;
+			makeObstaclesV();
+			makeObstaclesH();
+			makeFloors();
 		}
-		else if(i==3) {
-			makeObstacles3();
+		//creates level 3
+		else if(level==3) {
+			end = 5000;
+			limitV = 35;
+			makeObstaclesV();
 			makeGaps();
 		}
 		}
 	
-	public void makeObstaclesH1() {
-		int counter = 0;
-		int n = 2500;
-		int x = 500;
-		int y = 700;
-		int width = 10;
-		int height = 100;
-		int yCount = 0;
-		int [] yValues = {0,0,700,0,0,700,700,0,700,0,700};
-		
-		while(x<n) {
-			x+= 100;
-			while(counter<=6) {
-				add(new Obstacle(x,y,width,height));
-				y = yValues[yCount];
-				yCount = yCount +1;
-				x+= 200;
-				counter = counter +1;
-				if(yCount == 11) {
-					yCount = 0;
+	//makes horizontal platforms
+	public void makeObstaclesH() {
+		while(xH<end) {
+			xH+= 100;
+			while(counterH<=limitH) {
+				add(new Obstacle(xH,yH,widthH,heightH));
+				yH = yValuesH[yCountH];
+				yCountH = yCountH +1;
+				xH+= 200;
+				counterH = counterH +1;
+				if(yCountH == 11) {
+					yCountH = 0;
 				}
 			}
-			y=0;
+			yH=0;
 		}
 	}
-
-	public void makeObstaclesV1()
-	{	
-	int counter = 0;
-	Obstacle i = new Obstacle(0,800,2000,20); //floor
-	Obstacle ii = new Obstacle(0,0,2000,20);  //ceiling
-	add(ii);
-	add(i);
-	int n = 2500;
-	int x = 500;
-	int y = 00;
-	int width = 200;
-	int height = 10;
-	int yCount = 0;
-	int [] yValues = {685,550,200,150,300,400,650,500,600,130,350};
 	
-	while(x<n) {
-		x+= 100;
-		while(counter<=12) {
-			add(new Obstacle(x,y,width,height));
-			y = yValues[yCount];
-			yCount = yCount +1;
-			x+= 100;
-			counter = counter +1;
-			if(yCount == 11) {
-				yCount = 0;
-			}
-		}
-		y=0;
-	}
-	}
-
-	public void makeObstaclesH2() {
-		int counter = 0;
-		int n = 2500;
-		int x = 500;
-		int y = 700;
-		int width = 10;
-		int height = 100;
-		int yCount = 0;
-		int [] yValues = {0,0,700,0,0,700,0,700,700,0,700};
-		
-		while(x<n) {
-			x+= 100;
-			while(counter<=17) {
-				add(new Obstacle(x,y,width,height));
-				y = yValues[yCount];
-				yCount = yCount +1;
-				x+= 200;
-				counter = counter +1;
-				if(yCount == 11) {
-					yCount = 0;
+	//makes vertical platforms
+	public void makeObstaclesV() {
+		while(xV<end) {
+			xV+= 100;
+			while(counterV<=limitV) {
+				add(new Obstacle(xV,yV,widthV,heightV));
+				yV = yValuesV[yCountV];
+				yCountV = yCountV +1;
+				xV+= 100;
+				counterV = counterV +1;
+				if(yCountV == 11) {
+					yCountV = 0;
 				}
 			}
-			y=0;
+			yV=0;
 		}
 	}
-
 	
-	public void makeObstaclesV2() {
-		int counter = 0;
-		Obstacle i = new Obstacle(0,800,4500,20); //floor
-		Obstacle ii = new Obstacle(0,0,4500,20);  //ceiling
+	//makes floors and ceilings for levels 1 and 2
+	public void makeFloors() {
+		Obstacle i = new Obstacle(0,800,end-500,20); //floor
+		Obstacle ii = new Obstacle(0,0,end-500,20);  //ceiling
 		add(ii);
 		add(i);
-		int n = 4500;
-		int x = 500;
-		int y = 00;
-		int width = 200;
-		int height = 10;
-		int yCount = 0;
-		int [] yValues = {685,550,200,150,300,400,650,500,600,130,350};
-		
-		while(x<n) {
-			x+= 100;
-			while(counter<=35) {
-				add(new Obstacle(x,y,width,height));
-				y = yValues[yCount];
-				yCount = yCount +1;
-				x+= 100;
-				counter = counter +1;
-				if(yCount == 11) {
-					yCount = 0;
-				}
-			}
-			y=0;
-		}
 	}
 	
-	public void makeObstacles3() {
-		int counter = 0;
-		Obstacle i = new Obstacle(0,780,615,20); //floor
-		add(i);
-		int n = 4500;
-		int x = 500;
-		int y = 200;
-		int width = 200;
-		int height = 10;
-		int yCount = 0;
-		int [] yValues = {700,550,150,250,300,400,650,500,600,170,350};	
-		
-		while(x<n) {
-			x+= 100;
-			while(counter<=35) {
-				add(new Obstacle(x,y,width,height));
-				y = yValues[yCount];
-				yCount = yCount +1;
-				x+= 100;
-				counter = counter +1;
-				if(yCount == 11) {
-					yCount = 0;
-				}
-			}
-			y=0;
-		}
-	}
-	
+	//makes gapped floors for level 3
 	public void makeGaps() {
 		int counter = 0;
 		int n = 4000;
@@ -171,6 +105,8 @@ public class ObstacleList extends ArrayList<Obstacle>
 		int yCount = 0;
 		int [] yValues = {0,780,0,780,0,780,0,780,0,780,0};	
 		
+		Obstacle i = new Obstacle(0,780,600,20); //starting platform
+		add(i);
 		while(x<n) {
 			x+= 100;
 			while(counter<=43) {
