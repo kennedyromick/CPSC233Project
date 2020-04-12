@@ -30,16 +30,23 @@ public class RunnerList extends ArrayList<Runner> {
 		}
 		//creates level 2
 		else if (level==2) {
-			limit = 38;
-			freq = 100;
+			setLimit(38);
+			setFreq(100);
 			makeRunners();
 		}
 		//creates level 3
 		else if(level==3) {
-			limit = 52;
-			freq = 30;
+			setLimit(52);
+			setFreq(30);
 			makeRunners();
 		}
+	}
+	
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+	public void setFreq(int freq) {
+		this.freq = freq;
 	}
 	
 	//creates moveable enemies

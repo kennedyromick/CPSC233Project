@@ -25,30 +25,40 @@ public class ObstacleList extends ArrayList<Obstacle>
 		{
 		//creates level one
 		if(level == 1) {
-			end = 2500;
-			limitH = 6;
-			limitV = 12;
+			setEnd(2500);
+			setLimitH(6);
+			setLimitV(12);
 			makeObstaclesV();
 			makeObstaclesH();
 			makeFloors();
 		}
 		//creates level 2
 		else if (level==2) {
-			end = 5000;
-			limitH = 17;
-			limitV = 35;
+			setEnd(5000);
+			setLimitH(17);
+			setLimitV(35);
 			makeObstaclesV();
 			makeObstaclesH();
 			makeFloors();
 		}
 		//creates level 3
 		else if(level==3) {
-			end = 5000;
-			limitV = 35;
+			setEnd(5000);
+			setLimitV(35);
 			makeObstaclesV();
 			makeGaps();
 		}
 		}
+	
+	public void setLimitV(int limit) {
+		limitV = limit;
+	}
+	public void setLimitH(int limit) {
+		limitH = limit;
+	}
+	public void setEnd(int end) {
+		this.end = end;
+	}
 	
 	//makes horizontal platforms
 	public void makeObstaclesH() {
