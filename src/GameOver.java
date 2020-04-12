@@ -1,9 +1,7 @@
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -17,6 +15,8 @@ public class GameOver extends Application {
 	        launch(args);
 	    }
 
+	    //creates a small (300,100) game over screen that can be exited by clicking the exit button
+	    //says "GAME OVER!" in bold red letters
 	    @Override
 	    public void start(Stage primaryStage) {
 	    	primaryStage.setTitle("Game Over!");

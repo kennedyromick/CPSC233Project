@@ -2,16 +2,19 @@ import java.util.ArrayList;
 
 public class EndList extends ArrayList<End>
 {
-	
-	public EndList(int i)
+	//when avatar reaches the end wall the level is cleared
+	public EndList(int level)
 		{
-		if(i == 1) {
+		//creates level 1 end
+		if(level == 1) {
 			makeEnd1();
 		}
-		else if (i==2) {
+		//creates level 2 end
+		else if (level==2) {
 			makeEnd2();
 		}
-		else if(i==3) {
+		//creates level 3 end
+		else if(level==3) {
 			makeEnd3();
 		}
 		}

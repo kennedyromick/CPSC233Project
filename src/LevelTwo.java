@@ -37,15 +37,16 @@ public class LevelTwo {
 	public void start(Stage primaryStage) {
 
 		
-
+		//handles arrow key input
 		AvatarMovement avatarHandler2 = new AvatarMovement(avatar2, obstacleList2, runnerList2, meteorList, endList);
 			theScene2.setOnKeyPressed(avatarHandler2);
-			
+			//sets avatar as spaceship image
 			avatar2.setFill(
 				      new ImagePattern(
 				    	        new Image("space35.png"), 0, 0, 1, 1, true
 				    	      )
 				    	    );
+			//sets platforms as platform images
 			for(Obstacle o: obstacleList2) {
 				o.setFill(
 					      new ImagePattern(
@@ -53,6 +54,7 @@ public class LevelTwo {
 					    	      )
 					    	    );
 			}
+			//sets end wall as end wall image
 			for(End e: endList) {
 				e.setFill(
 					      new ImagePattern(
@@ -60,6 +62,7 @@ public class LevelTwo {
 					    	      )
 					    	    );
 			}
+			//sets enemeis as alien images
 			for(Runner r: runnerList2) {
 				r.setFill	(			
 					      new ImagePattern(
@@ -67,6 +70,7 @@ public class LevelTwo {
 					    	      )
 					    	    );
 			}
+			//adds avatar, enemies, platforms, end wall and level text to scene
 			root2.getChildren().add(avatar2);
 			root2.getChildren().addAll(runnerList2);
 			root2.getChildren().addAll(obstacleList2);
@@ -81,35 +85,43 @@ public class LevelTwo {
 	     				   	@Override
 	     				   	public void handle(ActionEvent event)
 	     				   	{
+	     				   		//if avatar reaches end wall go to level 2
 	     				   			if(avatar2.intersects(endList.get(0))) {
 	     				   				counter = counter+1;
+	     				   				//remove all level 2 items
 	     				   				root2.getChildren().remove(avatar2);
 	     				   				root2.getChildren().removeAll(runnerList2);
 	     				   				root2.getChildren().removeAll(obstacleList2);
 	     				   				root2.getChildren().removeAll(endList);
 	     				   				root2.getChildren().remove(text);
+	     				   				//initiate level 3
 	     				   				LevelThree three = new LevelThree(primaryStage2, root2, theScene2);
  								if(counter == 1) {
+ 									//start level 3
  								three.start(primaryStage2);
  								}
   								}
+	     				   			//checks for collisions with platforms
 	     				   	for(Obstacle p: obstacleList2) {
 	     				   		avatar2.unCollisionCheck(p);
 	     				   		avatar2.collisionCheck(p);
   						}
+	     				   	//reverses gravity
   						if(avatar2.getReverse() == false) 
   						{
-  							avatar2.jump();
+  							avatar2.revGrav();
   						}
   						else if(avatar2.getReverse() == true) 
   						{
      						avatar2.grav();
   						}
+  						//if avatar touches enemy, game over screen
    						for(Runner r: runnerList2) {
   							if(avatar2.intersects(r)) {
   								gmOver.start(primaryStage);
   							}
   							}
+   						//moves enemies
      				   	for(Runner r: runnerList2) {
      						r.updateLocation();
      						if(r.getLeftEnd() != r.getRightEnd()) {

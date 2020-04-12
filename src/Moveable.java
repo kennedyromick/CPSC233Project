@@ -6,71 +6,40 @@ public class Moveable extends Rectangle{
 
 	
 	public Moveable(double x, double y, double width, double height) {
+		//creates rectangle shape
 		super(x,y, width, height);
+		//speed in the horizontal and vertical direction
 		velocityX = 0;
 		velocityY = 0;
 	}
 
-	public void moveUp() {
-		velocityY = -5.0;
-		double y = getY();
-		y += velocityY;
-		setY(y);
-	}
-
-	public void moveDown() {
-		velocityY = 5.0;
-		double y = getY();
-		y += velocityY;
-		setY(y);
-	}
-
+	//moves object left by velocity X
 	public void moveLeft() {
 		velocityX = -3.0;
 		double x = getX();
 		x += velocityX;
 		setX(x);
 	}
-
-	public void moveRight(double d) {
-		velocityX = d;
-		double x = getX();
-		x += velocityX;
-		setX(x);
-	}
-	public void moveLeft(double d) {
-		velocityX = -d;
-		double x = getX();
-		x += velocityX;
-		setX(x);
-	}
-
+	//moves object right by velocity X
 	public void moveRight() {
 		velocityX = 3.0;
 		double x = getX();
 		x += velocityX;
 		setX(x);
 	}
-
-	public void jump() {	
+	//reverse gravity
+	public void revGrav() {	
 		velocityY =-5.0;
 		double y = getY();
 		y += velocityY;
 		setY(y);
 		}
-
+	//normal gravity
 	public void grav() {
 		velocityY =5.0;
 		double y = getY();
 		y += velocityY;
 		setY(y);
-	}
-	
-	public void setVelX(double d) {
-		velocityX = d;
-	}
-	public void setVelY(double d) {
-		
 	}
 	
 

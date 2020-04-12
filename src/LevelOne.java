@@ -1,6 +1,5 @@
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -8,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -42,7 +40,7 @@ public class LevelOne {
 		return imageView;
 	}
 	
-	//initiates background, avatar, moving enemies, platforms, end wall and Level label
+	//initiates avatar, moving enemies, platforms, end wall and Level label
 	ObstacleList obstacleList = new ObstacleList(1);
 	RunnerList runnerList = new RunnerList(1);
 	Avatar avatar = new Avatar(300,765,35,35);
@@ -53,7 +51,7 @@ public class LevelOne {
 	
 	public void start(Stage primaryStage) {
 
-	
+		//handles arrow key input
 		AvatarMovement avatarHandler = new AvatarMovement(avatar, obstacleList, runnerList, meteorList, endList);
 		theScene.setOnKeyPressed(avatarHandler);
 		
@@ -121,7 +119,7 @@ public class LevelOne {
      						//reverses gravity
      						if(avatar.getReverse() == false) 
      						{
-     							avatar.jump();
+     							avatar.revGrav();
      						}
      						else if(avatar.getReverse() == true) 
      						{

@@ -1,11 +1,7 @@
-
-
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -19,6 +15,8 @@ public class WinScreen extends Application{
         launch(args);
     }
 
+    //creates a small (550x100) screen for when the game is beat
+    //screen says "MISSION ACCOMPLISHED!"
     @Override
     public void start(Stage primaryStage) {
     	primaryStage.setTitle("Game Completed!");

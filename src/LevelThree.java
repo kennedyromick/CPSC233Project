@@ -6,11 +6,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -27,33 +23,65 @@ public class LevelThree {
 		primaryStage3 = stage;
 	}
 	
-	
+	//initiates avatar, moving enemies, platforms, end wall, game over screen,
+	//meteors, game beat screen and Level label
 	ObstacleList obstacleList3 = new ObstacleList(3);
 	RunnerList runnerList3 = new RunnerList(3);
-	Avatar avatar3 = new Avatar(300,755,25,25);
+	Avatar avatar3 = new Avatar(300,745,35,35);
 	EndList endList = new EndList(3);
 	MeteorList meteorList = new MeteorList(3);
 	LevelText text = new LevelText(3);
 	GameOver gmOver = new GameOver();
+	WinScreen win = new WinScreen();
 	
 	public void start(Stage primaryStage) {
 
+		//handles key arrow input
 		AvatarMovement avatarHandler3 = new AvatarMovement(avatar3, obstacleList3, runnerList3, meteorList, endList);
 		theScene3.setOnKeyPressed(avatarHandler3);
 		
 		Canvas canvas = new Canvas(1350,800);
 		root3.getChildren().add(canvas);
 		
-		avatar3.setFill(Color.LIGHTBLUE);
+		//sets avatar to spaceship image
+		avatar3.setFill(
+			      new ImagePattern(
+			    	        new Image("space35.png"), 0, 0, 1, 1, true
+			    	      )
+			    	    );
+		//sets platforms to platform images
 		for(Obstacle o: obstacleList3) {
-			o.setFill(Color.WHITE);
+			o.setFill(
+				      new ImagePattern(
+				    	        new Image("bump.jpg"), 0, 0, 1, 1, true
+				    	      )
+				    	    );
 		}
+		//sets end wall to end wall image
 		for(End e: endList) {
-			e.setFill(Color.WHITE);
+			e.setFill(
+				      new ImagePattern(
+				    	        new Image("bump.jpg"), 0, 0, 1, 1, true
+				    	      )
+				    	    );
 		}
+		//sets meteors to meteor images
 		for(Meteor m : meteorList) {
-			m.setFill(Color.BROWN);
+			m.setFill(
+				      new ImagePattern(
+				    	        new Image("download2.png"), 0, 0, 1, 1, true
+				    	      )
+				    	    );
 		}
+		//sets enemies to alien images
+		for(Runner r: runnerList3) {
+			r.setFill	(			
+				      new ImagePattern(
+				    	        new Image("alien.png"), 0, 0, 1, 1, true
+				    	      )
+				    	    );
+		}
+		//adds avatar, enemies, platforms, end wall, meteors and level label to the game
 		root3.getChildren().add(avatar3);
 		root3.getChildren().addAll(runnerList3);
 		root3.getChildren().addAll(obstacleList3);
@@ -69,30 +97,36 @@ public class LevelThree {
      				   	@Override
      				   	public void handle(ActionEvent event)
      				   	{
+     				   		//if avatar falls through floor gaps, game over screen
      				   		if(avatar3.outOfBounds()==true) {
      				   			gmOver.start(primaryStage);
      				   		}
+     				   		//if avatar reaches end wall, game beat screen
  								if(avatar3.intersects(endList.get(0))) {
- 									gmOver.start(primaryStage);
+ 									win.start(primaryStage);
  								}
+ 								//checks for collisions with platforms
      						for(Obstacle o: obstacleList3) 
      						{
      							avatar3.collisionCheck(o);
      							avatar3.unCollisionCheck(o);
      						}
+     						//reverses gravity
      						if(avatar3.getReverse() == false) 
      						{
-     							avatar3.jump();
+     							avatar3.revGrav();
      						}
      						else if(avatar3.getReverse() == true) 
      						{
         						avatar3.grav();
      						}
+     						//if avatar touches enemy, game over screen
        						for(Runner r: runnerList3) {
       							if(avatar3.intersects(r)) {
       								gmOver.start(primaryStage);
       							}
       							}
+       						//moves runners
          				   	for(Runner r: runnerList3) {
          						r.updateLocation();
          						if(r.getLeftEnd() != r.getRightEnd()) {
@@ -112,12 +146,13 @@ public class LevelThree {
          							 }
          						 }
           						}
+         				   	//if avatar touches meteors, game over screen
          				   for(Meteor m: meteorList) {
     							if(avatar3.intersects(m)) {
     								gmOver.start(primaryStage);
     							}
     						}
-    				   	
+    				   	//moves meteors
     				   for(Meteor m: meteorList)
       				 {
       					m.updateLocation();

@@ -5,38 +5,34 @@ import javafx.scene.text.Text;
 
 public class LevelText extends Text{
 	
-	public LevelText(int i)
+	private String levelNum;
+	
+	public LevelText(int level)
 	{
-	if(i == 1) {
-		makeText1();
+		//makes level one label
+	if(level == 1) {
+		setLevelNum("LEVEL 1");
+		makeText();
 	}
-	else if (i==2) {
-		makeText2();
+	//makes level two label
+	else if (level ==2) {
+		setLevelNum("LEVEL 2");
+		makeText();
 	}
-	else if(i==3) {
-		makeText3();
+	//makes level three label
+	else if(level ==3) {
+		setLevelNum("LEVEL 3");
+		makeText();
 	}
-	}
-	
-	
-	public void makeText3() {
-		setText("LEVEL 3"); 
-	    setFont(Font.font(null, FontWeight.BOLD, 25));
-	    setX(50); 
-	    setY(100); 
-	    setFill(Color.WHITE);
 	}
 	
-	public void makeText2() {
-		setText("LEVEL 2"); 
-	    setFont(Font.font(null, FontWeight.BOLD, 25));
-	    setX(50); 
-	    setY(100); 
-	    setFill(Color.WHITE);
+	public void setLevelNum(String label) {
+		levelNum = label;
 	}
 	
-	public void makeText1() {
-		setText("LEVEL 1"); 
+	//creates bold white level labels 
+	public void makeText() {
+		setText(levelNum); 
 	    setFont(Font.font(null, FontWeight.BOLD, 25));
 	    setX(50); 
 	    setY(100); 
