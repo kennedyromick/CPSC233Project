@@ -1,4 +1,3 @@
-import javafx.scene.paint.Color;
 
 public class Runner extends Moveable{
 	
@@ -10,6 +9,7 @@ public class Runner extends Moveable{
 	private int velY;
 	
 	public Runner(double x, double y, double width, double height, int end1, int end2, int vY) {
+		//creates rectangle shape
 		super(x,y,width,height);
 		//upEnd and downEnd define the range of movement
 		upEnd = end1;
