@@ -16,7 +16,7 @@ public class RunnerList extends ArrayList<Runner> {
 	//speed of the moveable enemies
 	private int vel = 2;
 	private int disMoved = 150;
-	//limits how mant enemies are created (more enemies in level three than two)
+	//limits how many enemies are created (more enemies in level three than two)
 	private int limit;
 	//y start positions and range of movement lists that are looped through
 	private int [] yValues = {700,550,200,150,300,400,650,500,600,100,350,730,700,120,140};
