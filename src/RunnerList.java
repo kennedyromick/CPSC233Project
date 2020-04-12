@@ -4,18 +4,20 @@ import javafx.scene.paint.Color;
 
 public class RunnerList extends ArrayList<Runner> {
 	
-	public RunnerList(int i)
+	public RunnerList(int level)
 	{
-		if(i == 1) {
+		if(level == 1) {
 			makeRunners1();
 		}
-		else if (i==2) {
+		else if (level==2) {
 			makeRunners2();
 		}
-		else if(i==3) {
+		else if(level==3) {
 			makeRunners3();
 		}
 	}
+	
+	//creates level 2 moveable enemies
 	public void makeRunners2()
 	{	
 		int counter = 0;
@@ -65,9 +67,11 @@ public class RunnerList extends ArrayList<Runner> {
 		
 	}
 	
+	//creates no enemies for level 1, needed for avatarHandler
 	public void makeRunners1() {
 	}
 	
+	//doubles the number of moveable enemies from level 2
 	public void makeRunners3() {
 		int counter = 0;
 		int n = 2000;

@@ -8,6 +8,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -23,9 +24,10 @@ public class LevelTwo {
 		primaryStage2 = stage;
 	}
 	
+	//initiates avatar, moving enemies, platforms, end wall, game over screen and Level label
 	ObstacleList obstacleList2 = new ObstacleList(2);
 	RunnerList runnerList2 = new RunnerList(2);
-	Avatar avatar2 = new Avatar(300,765,25,25);
+	Avatar avatar2 = new Avatar(300,765,35,35);
 	MeteorList meteorList = new MeteorList(2);
 	EndList endList = new EndList(2);
 	LevelText text = new LevelText(2);
@@ -39,12 +41,31 @@ public class LevelTwo {
 		AvatarMovement avatarHandler2 = new AvatarMovement(avatar2, obstacleList2, runnerList2, meteorList, endList);
 			theScene2.setOnKeyPressed(avatarHandler2);
 			
-			avatar2.setFill(Color.LIGHTBLUE);
+			avatar2.setFill(
+				      new ImagePattern(
+				    	        new Image("space35.png"), 0, 0, 1, 1, true
+				    	      )
+				    	    );
 			for(Obstacle o: obstacleList2) {
-				o.setFill(Color.WHITE);
+				o.setFill(
+					      new ImagePattern(
+					    	        new Image("bump.jpg"), 0, 0, 1, 1, true
+					    	      )
+					    	    );
 			}
 			for(End e: endList) {
-				e.setFill(Color.WHITE);
+				e.setFill(
+					      new ImagePattern(
+					    	        new Image("bump.jpg"), 0, 0, 1, 1, true
+					    	      )
+					    	    );
+			}
+			for(Runner r: runnerList2) {
+				r.setFill	(			
+					      new ImagePattern(
+					    	        new Image("alien.png"), 0, 0, 1, 1, true
+					    	      )
+					    	    );
 			}
 			root2.getChildren().add(avatar2);
 			root2.getChildren().addAll(runnerList2);

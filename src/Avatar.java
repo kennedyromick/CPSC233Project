@@ -97,7 +97,7 @@ public void collisionCheck(Obstacle o) {
 		setCollisionY2(false);
 		setCanJump(true);
 		}
-		if((getX()>= o.getX() && getX()<= o.getX()+o.getWidth()) || (getX()+getWidth()>= o.getX() && getX()+getWidth()<= o.getX()+o.getWidth())) {
+		if((o.getX()>= getX() && o.getX()<= getX()+getWidth()) || (o.getX()+o.getWidth()>= getX() && o.getX()+o.getWidth()<= getX()+getWidth())) {
 			setCollisionY1(true);
 			setCollisionY2(false);
 			setCanJump(true);

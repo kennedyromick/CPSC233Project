@@ -9,6 +9,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -25,7 +26,9 @@ public class LevelOne {
 		primaryStage = stage;
 	}
 	
+	//sets up background space image
 	public ImageView prepareImageView() {
+		//importing image
 		Image image = new Image(LevelOne.class.getResourceAsStream("stars.jpg"));
 		ImageView imageView = new ImageView(image);
 	      //Setting the position of the image 
@@ -39,9 +42,10 @@ public class LevelOne {
 		return imageView;
 	}
 	
+	//initiates background, avatar, moving enemies, platforms, end wall and Level label
 	ObstacleList obstacleList = new ObstacleList(1);
 	RunnerList runnerList = new RunnerList(1);
-	Avatar avatar = new Avatar(300,765,25,25);
+	Avatar avatar = new Avatar(300,765,35,35);
 	EndList endList = new EndList(1);
 	MeteorList meteorList = new MeteorList(1);
 	LevelText text = new LevelText(1);
@@ -56,13 +60,29 @@ public class LevelOne {
 		Canvas canvas = new Canvas(1350,800);
 		root.getChildren().add(canvas);
 		
-		avatar.setFill(Color.LIGHTBLUE);
+		//sets avatar as spaceship
+		avatar.setFill(
+			      new ImagePattern(
+			    	        new Image("space35.png"), 0, 0, 1, 1, true
+			    	      )
+			    	    );
+		//sets platform images
 		for(Obstacle o: obstacleList) {
-			o.setFill(Color.WHITE);
+			o.setFill(
+				      new ImagePattern(
+				    	        new Image("bump.jpg"), 0, 0, 1, 1, true
+				    	      )
+				    	    );
 		}
+		//sets last vertical wall image
 		for(End e: endList) {
-			e.setFill(Color.WHITE);
+			e.setFill(
+				      new ImagePattern(
+				    	        new Image("bump.jpg"), 0, 0, 1, 1, true
+				    	      )
+				    	    );
 		}
+		//adds background, avatar, moving enemies, platforms, end wall and Level label
 		root.getChildren().add(prepareImageView());
 		root.getChildren().add(avatar);
 		root.getChildren().addAll(runnerList);
@@ -77,6 +97,7 @@ public class LevelOne {
      				   	@Override
      				   	public void handle(ActionEvent event)
      				   	{
+     				   			//if avatar hits end wall go to level 2
 								if(avatar.intersects(endList.get(0))) {
  									counter = counter+1;
      								root.getChildren().remove(avatar);
@@ -84,16 +105,20 @@ public class LevelOne {
  									root.getChildren().removeAll(obstacleList);
  									root.getChildren().removeAll(endList);
  									root.getChildren().remove(text);
+ 								//initiates LevelTwo	
  								LevelTwo two = new LevelTwo(primaryStage, root, theScene);
  								if(counter == 1) {
+ 								//starts LevelTwo
  								two.start(primaryStage);
  								}
  								}
+							//checks for collisions with platforms	
      						for(Obstacle o: obstacleList) 
      						{
      							avatar.unCollisionCheck(o);
      							avatar.collisionCheck(o);
      							}
+     						//reverses gravity
      						if(avatar.getReverse() == false) 
      						{
      							avatar.jump();

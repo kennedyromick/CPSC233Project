@@ -11,10 +11,11 @@ public class Runner extends Moveable{
 	
 	public Runner(double x, double y, double width, double height, int end1, int end2, int vY) {
 		super(x,y,width,height);
+		//upEnd and downEnd define the range of movement
 		upEnd = end1;
 		downEnd = end2;
+		//speed of moveable enemy
 		velY = vY;
-		this.setFill(Color.SALMON);
 	}
 	public int getLeftEnd() {
 		return leftEnd;
@@ -29,6 +30,7 @@ public class Runner extends Moveable{
 		return downEnd;
 	}
 	
+	//reverse methods keep the enemy within range
 	 public void reverseX()
 	  {
 		  velX *= -1;
@@ -39,6 +41,7 @@ public class Runner extends Moveable{
 		  velY *= -1;
 	  }
 	
+	  //moves the moveable enemies
 	 public void updateLocation()
 	  {
 		 double x = getX();
