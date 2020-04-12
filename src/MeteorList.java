@@ -21,31 +21,20 @@ public class MeteorList extends ArrayList<Meteor>
 {
 	public MeteorList(int level)
 	{
+		//makes level 1
 		if(level == 1) {
-			makeMeteors1();
 		}
+		//makes level 2
 		else if (level ==2) {
-			makeMeteors2();
 		}
+		//makes level 3
 		else if(level ==3) {
-			makeMeteors3();
+			makeMeteors();
 		}
 	}
-
-	public void makeMeteors1()
+	//creates the meteors
+	public void makeMeteors()
 	{
-		
-	}
-	
-	public void makeMeteors2()
-	{
-	
-	}
-	
-	public void makeMeteors3()
-	
-	{
-		int n = 2000;
 		int x = 300;
 		int y = 0;
 		int width = 40;
@@ -56,7 +45,7 @@ public class MeteorList extends ArrayList<Meteor>
 		int [] end = {1850, 1900, 1870, 1836, 1905, 1850, 1875, 1800};
 		int [] velX = {5, 5, -5, 5, 5, -5, 5, -5};
 		int velY = 5;
-		
+		//loops through xstartValues to creates meteors in new spots
 		for(int i = 0; i <= xstartValues.length-1; i++) 
 			{
 				add(new Meteor(x,y,width,height, xstartValues[i], startyvalue[i], endyvalue, end[i], velX[i], velY));
