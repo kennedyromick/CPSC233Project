@@ -13,10 +13,10 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class LevelTwo {
-	int counter = 0;
-	Scene theScene2;
-	Group root2;
-	Stage primaryStage2;
+	private int counter = 0;
+	private Scene theScene2;
+	private Group root2;
+	private Stage primaryStage2;
 	
 	public LevelTwo(Stage stage, Group root, Scene scene) {
 		theScene2 = scene;
@@ -25,13 +25,13 @@ public class LevelTwo {
 	}
 	
 	//initiates avatar, moving enemies, platforms, end wall, game over screen and Level label
-	ObstacleList obstacleList2 = new ObstacleList(2);
-	RunnerList runnerList2 = new RunnerList(2);
-	Avatar avatar2 = new Avatar(300,765,35,35);
-	MeteorList meteorList = new MeteorList(2);
-	EndList endList = new EndList(2);
-	LevelText text = new LevelText(2);
-	GameOver gmOver = new GameOver();
+	private ObstacleList obstacleList2 = new ObstacleList(2);
+	private RunnerList runnerList2 = new RunnerList(2);
+	private Avatar avatar2 = new Avatar(300,765,35,35);
+	private MeteorList meteorList = new MeteorList(2);
+	private EndList endList = new EndList(2);
+	private LevelText text = new LevelText(2);
+	private GameOver gmOver = new GameOver();
 	
 	
 	public void start(Stage primaryStage) {

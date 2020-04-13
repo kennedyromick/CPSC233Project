@@ -13,10 +13,10 @@ import javafx.util.Duration;
 
 public class LevelOne {
 	
-	Scene theScene;
-	Group root;
-	Stage primaryStage;
-	int counter = 0;
+	private Scene theScene;
+	private Group root;
+	private Stage primaryStage;
+	private int counter = 0;
 	
 	public LevelOne(Stage stage, Group root, Scene scene) {
 		theScene = scene;
@@ -41,12 +41,12 @@ public class LevelOne {
 	}
 	
 	//initiates avatar, moving enemies, platforms, end wall and Level label
-	ObstacleList obstacleList = new ObstacleList(1);
-	RunnerList runnerList = new RunnerList(1);
-	Avatar avatar = new Avatar(300,765,35,35);
-	EndList endList = new EndList(1);
-	MeteorList meteorList = new MeteorList(1);
-	LevelText text = new LevelText(1);
+	private ObstacleList obstacleList = new ObstacleList(1);
+	private RunnerList runnerList = new RunnerList(1);
+	private Avatar avatar = new Avatar(300,765,35,35);
+	private EndList endList = new EndList(1);
+	private MeteorList meteorList = new MeteorList(1);
+	private LevelText text = new LevelText(1);
 	
 	
 	public void start(Stage primaryStage) {

@@ -12,10 +12,10 @@ import javafx.util.Duration;
 
 public class LevelThree {
 	
-	Scene theScene3;
-	Group root3;
-	Stage primaryStage3;
-	int counter = 0;
+	private Scene theScene3;
+	private Group root3;
+	private Stage primaryStage3;
+	private int counter = 0;
 	
 	public LevelThree(Stage stage, Group root, Scene scene) {
 		theScene3 = scene;
@@ -25,14 +25,14 @@ public class LevelThree {
 	
 	//initiates avatar, moving enemies, platforms, end wall, game over screen,
 	//meteors, game beat screen and Level label
-	ObstacleList obstacleList3 = new ObstacleList(3);
-	RunnerList runnerList3 = new RunnerList(3);
-	Avatar avatar3 = new Avatar(300,745,35,35);
-	EndList endList = new EndList(3);
-	MeteorList meteorList = new MeteorList(3);
-	LevelText text = new LevelText(3);
-	GameOver gmOver = new GameOver();
-	WinScreen win = new WinScreen();
+	private ObstacleList obstacleList3 = new ObstacleList(3);
+	private RunnerList runnerList3 = new RunnerList(3);
+	private Avatar avatar3 = new Avatar(300,745,35,35);
+	private EndList endList = new EndList(3);
+	private MeteorList meteorList = new MeteorList(3);
+	private LevelText text = new LevelText(3);
+	private GameOver gmOver = new GameOver();
+	private WinScreen win = new WinScreen();
 	
 	public void start(Stage primaryStage) {
 
