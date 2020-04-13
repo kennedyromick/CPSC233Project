@@ -2,8 +2,8 @@
 public class TextBasedAvatar{
 
 	boolean collision = false;
-	boolean health = true;
 	boolean gameOver = false;
+	boolean levelComplete = false;
 	int row;
 	int column;
 
@@ -18,6 +18,16 @@ public class TextBasedAvatar{
 
 	public int getColumn() {
 		return column;
+	}
+	
+	public boolean getGameOver() {
+		return gameOver;
+	}
+	public void setCollision(boolean b) {
+		collision = b;
+	}
+	public boolean getComplete() {
+		return levelComplete;
 	}
 	
 	public void up() {
@@ -48,6 +58,9 @@ public class TextBasedAvatar{
 		if(collision == false) {
 			if(column <= 8) {
 				column = column +1;
+			}
+			if(column >8) {
+				levelComplete = true;
 			}
 		}
 	}
