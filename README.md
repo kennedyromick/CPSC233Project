@@ -3,7 +3,7 @@
 ASTROBLAST! is a single player platform animation side scroller game (gameplay is viewed from a side-view camera angle). The player moves through various platforms, while avoiding objects, to complete an the game. The application asks the user for input on the player’s move and responds appropriately to that movement, as well as checking if any obstacles have been hit/not overcome. Progression to the next level or failure is determined by successful passage of all obstacles (enemies, gaps and meteors) to reach the end of the level. 
 
 ### Class Diagram 
-![Class Diagram] (https://github.com/kennedyromick/CrazyCodingClub/blob/master/Astroblast%20UML.png)
+! [Class Diagram] (https://github.com/kennedyromick/CrazyCodingClub/blob/master/Astroblast%20UML.png)
 
 ## Getting Started
 ### Installing
