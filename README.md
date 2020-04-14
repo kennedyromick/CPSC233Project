@@ -13,9 +13,7 @@ ASTROBLAST! is a single player platform animation side scroller game (gameplay i
 4. Type `git clone` and paste the URL copied in step 2. Then press **Enter** to create a local clone.
   > `git clone https://github.com/<your-username>/<your-repository>`
 5. Launch **Eclipse** workspace, go to **File**, then **Open Projects from File System**, click **Directory**, navigate to the directory the code was saved to, select the folder src from the cloned repository or the whole repository folder.
-6. Run the **GameGUI** class as a Java Application and blast off! 
-
-⋅⋅⋅ OR Run the **TextBasedGameGUI** to run the Text-Based version of the game. Explained further in the **Text-Based Version** section below.
+6. Run the **GameGUI** class as a Java Application and blast off! **_OR_** Run the **TextBasedGameGUI** to run the Text-Based version of the game. Explained further in the **Text-Based Version** section below.
 
 ### Instructions
 The objective of the game is to complete each level without dying by colliding into enemies, getting hit by meteors or falling into gaps on the floor and ceiling. Collisions with enemies or meteors, or falling into gaps is immediate **GAME OVER**, and you will have to restart the game at Level 1. End of Level 3 must be reached to complete the game.
